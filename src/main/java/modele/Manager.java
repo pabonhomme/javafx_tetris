@@ -1,4 +1,4 @@
-package modele;
+package main.java.modele;
 
 public class Manager {
     public Piece p;
