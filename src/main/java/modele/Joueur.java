@@ -17,12 +17,6 @@ public class Joueur {
     public String getPseudo() {
         return pseudo;
     }
-    public void faireTourner(){
-
-    }
-    public void descendrePlusVite(){
-
-    }
     // Je n'ai encore aucune idée de comment vontre être initalisée nos méthodes
 
 }

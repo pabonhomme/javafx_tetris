@@ -6,13 +6,14 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane xmlns="http://javafx.com/javafx"
-          xmlns:fx="http://javafx.com/fxml"
-          fx:controller="main.java.view.MaSceneControle">
+<?import javafx.scene.shape.Rectangle?>
+<fx:root xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml" type="BorderPane">
     <center>
-        <Button onAction="#clicOnButt" text="AfficherGrille" alignment="center"/>
-        <!--<GridPane fx:id="grille" columnConstraints="10" rowConstraints="10" visible="false">
-
-        </GridPane>-->
+        <!--<Button onAction="#clicJouer" text="Jouer" alignment="center"/>-->
     </center>
-</BorderPane>
+    <Rectangle width="50" height="50" fill="crimson"/>
+    <Rectangle width="50" height="50" fill="crimson" x="50" y="50"/>
+    <Rectangle width="50" height="50" fill="crimson" x="100" y="100"/>
+
+</fx:root>
