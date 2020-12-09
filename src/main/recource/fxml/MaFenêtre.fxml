@@ -1,19 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.shape.Rectangle?>
-<fx:root xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml" type="BorderPane">
+
+<?import javafx.scene.control.Button?>
+<fx:root type="BorderPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <center>
         <!--<Button onAction="#clicJouer" text="Jouer" alignment="center"/>-->
+        <ColorPicker fx:id="colorPickerAAfficher" BorderPane.alignment="CENTER" visible="false"/>
     </center>
-    <Rectangle width="50" height="50" fill="crimson"/>
-    <Rectangle width="50" height="50" fill="crimson" x="50" y="50"/>
-    <Rectangle width="50" height="50" fill="crimson" x="100" y="100"/>
+    <top>
+        <Button onAction="#clicOnButt" text="Afficher le choix des couleurs" BorderPane.alignment="CENTER"/>
+    </top>
+
+        <Rectangle fill="crimson" height="50" width="50" />
+        <Rectangle fill="crimson" height="50" width="50" x="50" y="50" />
+        <Rectangle fill="crimson" height="50" width="50" x="100" y="100" />
+
+
+
+
+
 
 </fx:root>
