@@ -1,8 +1,9 @@
-package main.java.view;
+package view;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import main.java.modele.GameManager;
+import javafx.scene.control.ColorPicker;
+import modele.GameManager;
 
 import java.awt.event.ActionEvent;
 import java.io.IOException;
@@ -14,6 +15,14 @@ public class Menu extends Vue{
         loader.setController(this);
         loader.setRoot(this);
         loader.load();
+    }
+
+    @FXML
+    private ColorPicker colorPickerAAfficher;
+
+    @FXML
+    private void clicOnButt(){
+        colorPickerAAfficher.setVisible(true);
     }
 
     @FXML

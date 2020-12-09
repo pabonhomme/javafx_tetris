@@ -1,4 +1,4 @@
-package main.java.launch;
+package launch;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -6,8 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
-import main.java.modele.GameManager;
-import main.java.view.Menu;
+import modele.GameManager;
+import view.Menu;
 
 import java.io.IOException;
 
@@ -19,6 +19,9 @@ public class Launch extends Application {
             GameManager gameManager = new GameManager();
             Parent root = new Menu(gameManager);
             Scene scene = new Scene(root);
+            primaryStage.setTitle("Tetris");
+            primaryStage.setWidth(600);
+            primaryStage.setHeight(500);
             primaryStage.setScene(scene);
             primaryStage.show();
         }
