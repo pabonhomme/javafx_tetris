@@ -16,8 +16,9 @@ public class Launch extends Application {
     public void start(Stage primaryStage) throws Exception {
         //Parent root = FXMLLoader.load(getClass().getResource("/fxml/MaFenêtre.fxml"));
         try {
-            GameManager gameManager = new GameManager();
-            Parent root = new Menu(gameManager);
+            //GameManager gameManager = new GameManager();
+            //Parent root = new Menu(gameManager);
+            Parent root = FXMLLoader.load(getClass().getResource("/fxml/Menu.fxml"));
             Scene scene = new Scene(root);
             primaryStage.setTitle("Tetris");
             primaryStage.setWidth(600);
