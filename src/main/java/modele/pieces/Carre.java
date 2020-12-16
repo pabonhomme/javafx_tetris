@@ -1,8 +1,8 @@
-package modele;
+package modele.pieces;
 
-// Elle est constituée de trois carrés en ligne et d'un quatrième carré sous le centre
-public class Te extends Piece{
-    public Te(int x, int y, Couleur couleur) {
+// Elle est constituée de quatre carrés formant un méta-carré de 2x2
+public class Carre extends Piece{
+    public Carre(int x, int y,Couleur couleur) {
         super(couleur);
         this.creationMorceaux(x, y);
     }
@@ -14,15 +14,16 @@ public class Te extends Piece{
         listeMorceaux.get(i).setY(y);
 
         // deuxième morceau haut gauche
-        listeMorceaux.get(i+1).setX(x+1);
-        listeMorceaux.get(i+1).setY(y);
+        listeMorceaux.get(i+1).setX(x);
+        listeMorceaux.get(i+1).setY(y+1);
 
         // troisème morceau bas droite
-        listeMorceaux.get(i+2).setX(x+2);
+        listeMorceaux.get(i+2).setX(x+1);
         listeMorceaux.get(i+2).setY(y);
 
         // quatrième morceau haut droite
         listeMorceaux.get(i+3).setX(x+1);
         listeMorceaux.get(i+3).setY(y+1);
     }
+
 }

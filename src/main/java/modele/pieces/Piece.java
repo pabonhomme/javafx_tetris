@@ -1,4 +1,4 @@
-package modele;
+package modele.pieces;
 
 import java.util.ArrayList;
 
@@ -8,18 +8,22 @@ public abstract class Piece {
     protected ArrayList<Morceau> listeMorceaux;
 
     public Couleur getCouleur() {
+
         return couleur;
     }
 
     public void setCouleur(Couleur couleur) {
+
         this.couleur = couleur;
     }
 
     public ArrayList<Morceau> getListeMorceaux() {
+
         return listeMorceaux;
     }
 
     public void setListeMorceaux(ArrayList<Morceau> listeMorceaux) {
+
         this.listeMorceaux = listeMorceaux;
     }
 

@@ -1,8 +1,8 @@
-package modele;
+package modele.pieces;
 
-// Elle est constituée de trois carrés en ligne et d'un quatrième carré sous le côté gauche
-public class Lambda extends Piece{
-    public Lambda(int x, int y, Couleur couleur) {
+// Elle est constituée de quatre carrés formant un métacarré de 2x2, dont la rangée supérieure est glissée d'un pas vers la droite.
+public class BiaisInverse extends Piece{
+    public BiaisInverse(int x, int y, Couleur couleur) {
         super(couleur);
         this.creationMorceaux(x, y);
     }
@@ -18,11 +18,11 @@ public class Lambda extends Piece{
         listeMorceaux.get(i+1).setY(y);
 
         // troisème morceau bas droite
-        listeMorceaux.get(i+2).setX(x+2);
-        listeMorceaux.get(i+2).setY(y);
+        listeMorceaux.get(i+2).setX(x+1);
+        listeMorceaux.get(i+2).setY(y-1);
 
         // quatrième morceau haut droite
         listeMorceaux.get(i+3).setX(x+2);
-        listeMorceaux.get(i+3).setY(y+1);
+        listeMorceaux.get(i+3).setY(y-1);
     }
 }

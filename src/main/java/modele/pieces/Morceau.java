@@ -1,4 +1,4 @@
-package modele;
+package modele.pieces;
 
 public class Morceau {
     private int x;

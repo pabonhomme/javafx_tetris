@@ -9,12 +9,15 @@ public class Joueur {
         this.pseudo = "";
     }
     public void setPseudo(String pseudo) {
+
         this.pseudo = pseudo;
     }
     public int getScore(){
+
         return score;
     }
     public String getPseudo() {
+
         return pseudo;
     }
     // Je n'ai encore aucune idée de comment vontre être initalisée nos méthodes

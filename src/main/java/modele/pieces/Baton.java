@@ -1,4 +1,4 @@
-package modele;
+package modele.pieces;
 
 // Elle est constituée de quatre carrés formant une ligne
 public class Baton extends Piece{

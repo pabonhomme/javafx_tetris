@@ -14,11 +14,11 @@ import java.io.IOException;
 public class Launch extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
-        //Parent root = FXMLLoader.load(getClass().getResource("/fxml/MaFenêtre.fxml"));
+        //Parent root = FXMLLoader.load(getClass().getResource("/fxml/MaFenetre.fxml"));
         try {
-            //GameManager gameManager = new GameManager();
-            //Parent root = new Menu(gameManager);
-            Parent root = FXMLLoader.load(getClass().getResource("/fxml/Menu.fxml"));
+            GameManager gameManager = new GameManager();
+            Parent root = new Menu(gameManager);
+            //Parent root = FXMLLoader.load(getClass().getResource("/fxml/MaFenetre.fxml"));
             Scene scene = new Scene(root);
             primaryStage.setTitle("Tetris");
             primaryStage.setWidth(600);

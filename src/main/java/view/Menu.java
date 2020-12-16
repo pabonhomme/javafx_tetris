@@ -11,7 +11,7 @@ import java.io.IOException;
 public class Menu extends Vue{
     public Menu(GameManager gmanager) throws IOException {
         super(gmanager);
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/MaFenêtre.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/MaFenetre.fxml"));
         loader.setController(this);
         loader.setRoot(this);
         loader.load();
@@ -21,12 +21,13 @@ public class Menu extends Vue{
     private ColorPicker colorPickerAAfficher;
 
     @FXML
-    private void clicOnButt(){
+    private void clicOnButt(ActionEvent actionEvent){
         colorPickerAAfficher.setVisible(true);
     }
 
     @FXML
-    private void clicJouer(ActionEvent actionEvent) throws Exception{
+    private void clicJouer() throws Exception{
         getGmanager().lancerPartie();
+
     }
 }

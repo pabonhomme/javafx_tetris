@@ -1,4 +1,4 @@
-package modele;
+package modele.pieces;
 
 // Elle est constituée de trois carrés en ligne et d'un quatrième carré sous le côté droit
 public class Gamma extends Piece{

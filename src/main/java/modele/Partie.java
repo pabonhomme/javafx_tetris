@@ -1,33 +1,42 @@
 package modele;
 
+import modele.pieces.Morceau;
+
+import java.util.ArrayList;
+
 public class Partie {
     private int score;
-    private Quadrillage ecran;
     private Joueur joueurEnCours;
+    private Boolean estFini;
+    private ArrayList<Morceau> listePieceEnJeu;
+    private ArrayList<String> listePiece;
 
     public int getScore() {
+
         return score;
     }
 
-    public Quadrillage getEcran() {
-        return ecran;
-    }
-
-    public Joueur getJoueurEnCours() { return joueurEnCours; }
-
     public void setScore(int score) {
+
         this.score = score;
     }
 
-    public void setEcran(Quadrillage ecran) {
-        this.ecran = ecran;
+    public Joueur getJoueurEnCours() {
+
+        return joueurEnCours;
     }
 
-    public void setJoueurEnCours(Joueur joueurEnCours) { this.joueurEnCours = joueurEnCours; }
+    public Boolean getEstFini() {
+
+        return estFini;
+    }
 
     public Partie(){
-        ecran=new Quadrillage();
-        score=0;
+        this.score=0;
+        this.estFini = false;
         joueurEnCours = new Joueur();
+    }
+    public void setPseudoJoueur(String pseudo){
+        this.joueurEnCours.setPseudo(pseudo);
     }
 }
