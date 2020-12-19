@@ -19,11 +19,11 @@ public class Launch extends Application {
         //Parent root = FXMLLoader.load(getClass().getResource("/fxml/MaFenetre.fxml"));
         try {
             GameManager.getInstance().setPrimaryStage(primaryStage);
-            Parent root = FXMLLoader.load(getClass().getResource("/fxml/MaFenetre.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/fxml/Menu.fxml"));
             Scene scene = new Scene(root);
             primaryStage.setTitle("Tetris");
-            primaryStage.setWidth(600);
-            primaryStage.setHeight(500);
+            primaryStage.setWidth(650);
+            primaryStage.setHeight(650);
             primaryStage.setScene(scene);
             primaryStage.show();
         }

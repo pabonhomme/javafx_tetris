@@ -1,9 +1,13 @@
 package modele;
 
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import view.MorceauV;
+import view.PartieV;
 
 import java.util.ArrayList;
 
@@ -69,9 +73,10 @@ public class GameManager {
     }
 
 
-    public void chargerEcranPartie() {
+    public void chargerEcranPartie(){
+        lancerPartie();
         Group root = new Group();
-        root.getChildren().add(new MorceauV());
+        root.getChildren().add(new PartieV());
         Scene sceneGame = new Scene(root);
         primaryStage.setScene(sceneGame);
     }

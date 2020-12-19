@@ -19,7 +19,11 @@ public class Menu{
     private void clicOnButt(){
 
         colorPickerAAfficher.setVisible(true);
-        gmanager.chargerEcranPartie();
+        try {
+            gmanager.chargerEcranPartie();
+        }catch (Exception e){
+            System.out.println(e);
+        }
     }
 
     @FXML
