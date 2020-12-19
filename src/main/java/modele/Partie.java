@@ -26,9 +26,17 @@ public class Partie {
         return joueurEnCours;
     }
 
+    public void setJoueurEnCours(Joueur joueurEnCours) {
+        this.joueurEnCours = joueurEnCours;
+    }
+
     public Boolean getEstFini() {
 
         return estFini;
+    }
+
+    public void setEstFini(Boolean estFini) {
+        this.estFini = estFini;
     }
 
     public Partie(){

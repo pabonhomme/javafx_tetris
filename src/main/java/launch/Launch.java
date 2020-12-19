@@ -12,13 +12,14 @@ import view.Menu;
 import java.io.IOException;
 
 public class Launch extends Application {
+
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         //Parent root = FXMLLoader.load(getClass().getResource("/fxml/MaFenetre.fxml"));
         try {
-            GameManager gameManager = new GameManager();
-            Parent root = new Menu(gameManager);
-            //Parent root = FXMLLoader.load(getClass().getResource("/fxml/MaFenetre.fxml"));
+            GameManager.getInstance().setPrimaryStage(primaryStage);
+            Parent root = FXMLLoader.load(getClass().getResource("/fxml/MaFenetre.fxml"));
             Scene scene = new Scene(root);
             primaryStage.setTitle("Tetris");
             primaryStage.setWidth(600);
@@ -27,8 +28,9 @@ public class Launch extends Application {
             primaryStage.show();
         }
         catch (IOException e){
-            System.out.println(e.getMessage());
+            System.out.println(e);
         }
     }
+
 
 }
