@@ -1,4 +1,4 @@
-package view;
+package view.ObjetV;
 
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
@@ -13,13 +13,13 @@ public class MorceauV extends Parent {
 
     Rectangle rectangle;
 
-    public MorceauV(double x, double y) {
+    public MorceauV( Color color) {
         rectangle=new Rectangle();
-        rectangle.setX(x);
-        rectangle.setY(y);
+//        rectangle.setX(x);
+//        rectangle.setY(y);
         rectangle.setWidth(42);
         rectangle.setHeight(30);
-        rectangle.setFill(Color.RED);
+        rectangle.setFill(color);
         rectangle.setStroke(Color.BLACK);
         rectangle.setStrokeType(StrokeType.INSIDE);
         this.getChildren().addAll(rectangle);

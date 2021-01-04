@@ -4,10 +4,8 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import modele.GameManager;
-import view.Menu;
 
 import java.io.IOException;
 
@@ -16,7 +14,6 @@ public class Launch extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        //Parent root = FXMLLoader.load(getClass().getResource("/fxml/MaFenetre.fxml"));
         try {
             GameManager.getInstance().setPrimaryStage(primaryStage);
             Parent root = FXMLLoader.load(getClass().getResource("/fxml/Menu.fxml"));
@@ -25,6 +22,7 @@ public class Launch extends Application {
             primaryStage.setWidth(650);
             primaryStage.setHeight(650);
             primaryStage.setScene(scene);
+            primaryStage.setResizable(false);
             primaryStage.show();
         }
         catch (IOException e){
@@ -32,5 +30,9 @@ public class Launch extends Application {
         }
     }
 
-
+    @Override
+    public void stop() throws Exception {
+        GameManager.getInstance().stopBoucleur();
+        super.stop();
+    }
 }

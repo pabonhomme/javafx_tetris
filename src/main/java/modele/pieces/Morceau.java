@@ -1,31 +1,41 @@
 package modele.pieces;
 
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+
 public class Morceau {
-    private int x;
-    private int y;
+    private DoubleProperty x = new SimpleDoubleProperty();
+        public double getX(){return x.get();}
+        public DoubleProperty xProperty(){return x;}
+        public void setX(double x){this.x.set(x);}
+
+    private DoubleProperty y = new SimpleDoubleProperty();
+        public double getY(){return y.get();}
+        public DoubleProperty yProperty(){return y;}
+        public void setY(double y){this.y.set(y);}
+
 
     public Morceau (){
-        x = 0;
-        y = 0;
+        setX(0);
+        setY(0);
     }
     public Morceau (int x, int y){
-        this.x = x;
-        this.y = y;
+        setX(x);
+        setY(y);
     }
 
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public void setY(int y) {
-        this.y = y;
+    @Override
+    public boolean equals(Object v) { //méthode equals qui compare entre deux objets, et ensuite entre deux instances d'Utilisateurs.
+        if (this == v)
+            return true;
+        if (v == null)
+            return false;
+        if(getClass() != v.getClass())
+            return false;
+        //comparaison
+        Morceau m = (Morceau)v;
+        if(getX() != m.getX())
+            return false;
+        return getY() == m.getY();
     }
 }

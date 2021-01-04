@@ -1,8 +1,10 @@
 package modele.pieces;
 
+import javafx.scene.paint.Color;
+
 // Elle est constituée de quatre carrés formant une ligne
 public class Baton extends Piece{
-    public Baton(int x, int y, Couleur couleur) {
+    public Baton(int x, int y, Color couleur) {
         super(couleur);
         this.creationMorceaux(x, y);
     }

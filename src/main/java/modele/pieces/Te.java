@@ -1,8 +1,10 @@
 package modele.pieces;
 
+import javafx.scene.paint.Color;
+
 // Elle est constituée de trois carrés en ligne et d'un quatrième carré sous le centre
 public class Te extends Piece{
-    public Te(int x, int y, Couleur couleur) {
+    public Te(int x, int y, Color couleur) {
         super(couleur);
         this.creationMorceaux(x, y);
     }

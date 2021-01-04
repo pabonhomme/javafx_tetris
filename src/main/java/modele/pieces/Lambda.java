@@ -1,8 +1,10 @@
 package modele.pieces;
 
+import javafx.scene.paint.Color;
+
 // Elle est constituée de trois carrés en ligne et d'un quatrième carré sous le côté gauche
 public class Lambda extends Piece{
-    public Lambda(int x, int y, Couleur couleur) {
+    public Lambda(int x, int y, Color couleur) {
         super(couleur);
         this.creationMorceaux(x, y);
     }

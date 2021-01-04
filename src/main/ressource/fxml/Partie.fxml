@@ -6,7 +6,8 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ControllerPartie">
+<?import javafx.scene.layout.Region?>
+<GridPane fx:id="partie" gridLinesVisible="true" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ControllerPartie">
     <columnConstraints>
         <ColumnConstraints percentWidth="70" />
         <ColumnConstraints percentWidth="30" />
@@ -14,8 +15,10 @@
     <rowConstraints>
         <RowConstraints percentHeight="100" />
     </rowConstraints>
-   <children>
-      <Button mnemonicParsing="false" text="Works" GridPane.columnIndex="1" />
-      <Group />
-   </children>
+    <children>
+
+        <Group fx:id="ecran" GridPane.columnIndex="0">
+            <Region style="-fx-border-style: solid; -fx-border-color: black;" prefWidth="420" prefHeight="600"/>
+        </Group>
+    </children>
 </GridPane>
