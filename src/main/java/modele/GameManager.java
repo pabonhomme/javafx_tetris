@@ -166,35 +166,35 @@ public class GameManager implements InvalidationListener {
         }
     }
 
-    // méthode qui s'éxécute en boucle dans beep dans le boucleur
+
+    /**
+     * méthode qui s'éxécute en boucle dans beep dans le boucleur
+     *
+     * @param observable
+     */
     @Override
     public void invalidated(Observable observable) {
-//        if (jeu.getListePieceEnJeu().size() == 1) {
-            for (Piece p : jeu.getListePieceEnJeu()) {
-                if (jeu.getPieceCourante() == p) {
-                    if (leCollisionneur.peutBouger(p.getListeMorceaux().get(0).getX(), p.getListeMorceaux().get(0).getY())) {
-                        leDeplaceur.descendre(jeu.getPieceCourante());// move piece courante
-                        leDeplaceur.descendre(p);// move piece dans liste bindée
-                    } else {
-                        leCreateur.creerPiece(jeu);
-                    }
-                }
+        boolean shouldCreatePiece = false;
+        if (jeu.getListePieceEnJeu().size() == 1) {
+            if (leCollisionneur.peutBouger(jeu.getPieceCourante().getListeMorceaux().get(0).getX(), jeu.getPieceCourante().getListeMorceaux().get(0).getY())) {
+                leDeplaceur.descendre(jeu.getPieceCourante());// move piece courante
+            } else {
+                shouldCreatePiece = true;
             }
-//        } else {
-//            for (Piece p : jeu.getListePieceEnJeu()) {
-//                if (jeu.getPieceCourante() != p) {
-//                    if (leCollisionneur.toucheAutrePiece(p)) {
-//                        leCreateur.creerPiece(jeu);
-//                        break;
-//                    } else if (leCollisionneur.peutBouger(p.getListeMorceaux().get(0).getX(), p.getListeMorceaux().get(0).getY())) {
-//
-//                        leDeplaceur.descendre(jeu.getPieceCourante());// move piece courante
-//                        leDeplaceur.descendre(p);// move piece dans liste bindée
-//
-//                    }
-//                }
-//            }
-//        }
+            if (shouldCreatePiece) {
+                leCreateur.creerPiece(jeu);
+            }
+        } else {
+
+            if (leCollisionneur.peutBouger(jeu.getPieceCourante().getListeMorceaux().get(0).getX(), jeu.getPieceCourante().getListeMorceaux().get(0).getY()) && !leCollisionneur.toucheAutrePiece()) {
+                leDeplaceur.descendre(jeu.getPieceCourante());// move piece courante
+            } else {
+                shouldCreatePiece = true;
+            }
+            if (shouldCreatePiece) {
+                leCreateur.creerPiece(jeu);
+            }
+        }
 
     }
 }

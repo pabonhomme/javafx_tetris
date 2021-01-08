@@ -25,7 +25,7 @@ public class DeplaceurPiece extends Deplaceur{
         if(leCollisionneur.peutBouger(p.getListeMorceaux().get(0).getX() +21,p.getListeMorceaux().get(0).getY())){
             for (Morceau morceau:p.getListeMorceaux()) {
                 morceau.setX(morceau.getX() + 21);// de 21 en 21 pour pas aller trop vite car width morceau = 42
-                System.out.println(morceau.getX());
+                //System.out.println(morceau.getX());
             }
         }
     }
@@ -43,7 +43,7 @@ public class DeplaceurPiece extends Deplaceur{
         if(leCollisionneur.peutBouger(p.getListeMorceaux().get(0).getX(),p.getListeMorceaux().get(0).getY())){
             for (Morceau morceau:p.getListeMorceaux()) {
                 morceau.setY(morceau.getY() + 15); // de 1 en 1 à 16 milliseconde pour que la descente soit fluide
-                System.out.println(morceau.getY());
+                //System.out.println(morceau.getY());
             }
         }
     }

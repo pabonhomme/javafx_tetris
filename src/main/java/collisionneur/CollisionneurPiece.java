@@ -12,11 +12,13 @@ public class CollisionneurPiece extends Collisionneur {
     }
 
     @Override
-    public boolean toucheAutrePiece(Piece p) {
+    public boolean toucheAutrePiece() {
 
-        for (Morceau m : p.getListeMorceaux()) {
-            if (jeu.getPieceCourante().getListeMorceaux().get(2).getY() == m.getY()) {
-                return true;
+        for (Piece p : jeu.getListePieceEnJeu()) {
+            if(jeu.getPieceCourante() != p){
+                if (jeu.getPieceCourante().getListeMorceaux().get(1).getY() + 30 == p.getListeMorceaux().get(0).getY() && jeu.getPieceCourante().getListeMorceaux().get(1).getX() != p.getListeMorceaux().get(0).getX()) {
+                    return true;
+                }
             }
         }
         return false;
