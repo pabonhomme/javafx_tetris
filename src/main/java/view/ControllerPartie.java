@@ -6,10 +6,8 @@ import javafx.scene.Group;
 import javafx.scene.layout.Pane;
 import modele.GameManager;
 import modele.pieces.Carre;
-import modele.pieces.Morceau;
 import modele.pieces.Piece;
 import view.ObjetV.CarreV;
-import view.ObjetV.MorceauV;
 
 public class ControllerPartie {
 
@@ -37,23 +35,14 @@ public class ControllerPartie {
                     }
                 }
         );
-
-
-
     }
 
     private void updateEcran(Piece piece) {
 
             if (piece instanceof Carre) {
-                CarreV carreV = new CarreV();
-                for (Morceau morceau : piece.getListeMorceaux()) {
-                    MorceauV morceauV = new MorceauV(piece.getCouleur());
-                    morceauV.layoutXProperty().bind(morceau.xProperty()); // binding des x du modele du morceau
-                    morceauV.layoutYProperty().bind(morceau.yProperty()); // binding des y du modele du morceau
-                    carreV.addMorceauV(morceauV); // ajout du morceauV au carreV
-                }
+                CarreV carreV = new CarreV(piece);
+                gmanager.getJeu().ajouterPieceV(carreV); // Pour tester la collision
                 ecran.getChildren().add(carreV); // ajout du carreV au Group
             }
-
     }
 }

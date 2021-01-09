@@ -15,8 +15,6 @@ public class MorceauV extends Parent {
 
     public MorceauV( Color color) {
         rectangle=new Rectangle();
-//        rectangle.setX(x);
-//        rectangle.setY(y);
         rectangle.setWidth(42);
         rectangle.setHeight(30);
         rectangle.setFill(color);

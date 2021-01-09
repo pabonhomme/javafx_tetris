@@ -5,6 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import modele.pieces.Morceau;
 import modele.pieces.Piece;
+import view.ObjetV.CarreV;
 
 import java.util.ArrayList;
 
@@ -14,6 +15,7 @@ public class Partie {
     private Piece pieceCourante;
     private Boolean estFini;
     private ObservableList<Piece> listePieceEnJeu = FXCollections.observableArrayList();
+    private ObservableList<CarreV> listePieceEnJeuV = FXCollections.observableArrayList(); // liste de piece vue pr tester collision
     private ArrayList<String> listePiece;
 
     public int getScore() {
@@ -71,5 +73,18 @@ public class Partie {
     public void ajouterPiece(Piece p){
 
         listePieceEnJeu.add(p);
+    }
+
+    public void ajouterPieceV(CarreV p){
+
+        listePieceEnJeuV.add(p);
+    }
+
+    public ObservableList<CarreV> getListePieceEnJeuV() {
+        return listePieceEnJeuV;
+    }
+
+    public void setListePieceEnJeuV(ObservableList<CarreV> listePieceEnJeuV) {
+        this.listePieceEnJeuV = listePieceEnJeuV;
     }
 }
