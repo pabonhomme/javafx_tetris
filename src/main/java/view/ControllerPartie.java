@@ -41,6 +41,7 @@ public class ControllerPartie {
 
             if (piece instanceof Carre) {
                 CarreV carreV = new CarreV(piece);
+                gmanager.getJeu().setPieceCouranteV(carreV); // Pour tester la collision
                 gmanager.getJeu().ajouterPieceV(carreV); // Pour tester la collision
                 ecran.getChildren().add(carreV); // ajout du carreV au Group
             }

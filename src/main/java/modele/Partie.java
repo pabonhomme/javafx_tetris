@@ -13,6 +13,7 @@ public class Partie {
     private int score;
     private Joueur joueurEnCours;
     private Piece pieceCourante;
+    private CarreV pieceCouranteV;
     private Boolean estFini;
     private ObservableList<Piece> listePieceEnJeu = FXCollections.observableArrayList();
     private ObservableList<CarreV> listePieceEnJeuV = FXCollections.observableArrayList(); // liste de piece vue pr tester collision
@@ -86,5 +87,13 @@ public class Partie {
 
     public void setListePieceEnJeuV(ObservableList<CarreV> listePieceEnJeuV) {
         this.listePieceEnJeuV = listePieceEnJeuV;
+    }
+
+    public CarreV getPieceCouranteV() {
+        return pieceCouranteV;
+    }
+
+    public void setPieceCouranteV(CarreV pieceCouranteV) {
+        this.pieceCouranteV = pieceCouranteV;
     }
 }

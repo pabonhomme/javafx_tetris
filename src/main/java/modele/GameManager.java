@@ -16,6 +16,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import modele.pieces.Morceau;
 import modele.pieces.Piece;
+import view.ObjetV.CarreV;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -185,16 +186,29 @@ public class GameManager implements InvalidationListener {
                 leCreateur.creerPiece(jeu);
             }
         } else {
-
-            if (leCollisionneur.peutBouger(jeu.getPieceCourante().getListeMorceaux().get(0).getX(), jeu.getPieceCourante().getListeMorceaux().get(0).getY()) && !leCollisionneur.toucheAutrePiece()) {
-                leDeplaceur.descendre(jeu.getPieceCourante());// move piece courante
-            } else {
-                shouldCreatePiece = true;
+            if(!leCollisionneur.toucheAutrePieceV()){
+                if (leCollisionneur.peutBouger(jeu.getPieceCourante().getListeMorceaux().get(0).getX(), jeu.getPieceCourante().getListeMorceaux().get(0).getY())) {
+                    leDeplaceur.descendre(jeu.getPieceCourante());// move piece courante
+                } else {
+                    shouldCreatePiece = true;
+                }
+                if (shouldCreatePiece) {
+                    leCreateur.creerPiece(jeu);
+                }
             }
-            if (shouldCreatePiece) {
-                leCreateur.creerPiece(jeu);
+            else{
+                if(leCollisionneur.toucheAutrePieceGauche() && !leCollisionneur.toucheAutrePieceDroite()){
+                    if (leCollisionneur.peutBouger(jeu.getPieceCourante().getListeMorceaux().get(0).getX(), jeu.getPieceCourante().getListeMorceaux().get(0).getY())) {
+                        leDeplaceur.descendre(jeu.getPieceCourante());// move piece courante
+                    }
+                }else {
+                    shouldCreatePiece = true;
+                }
+                if (shouldCreatePiece) {
+                    leCreateur.creerPiece(jeu);
+                }
             }
         }
-
+//        !leCollisionneur.toucheAutrePiece()
     }
 }

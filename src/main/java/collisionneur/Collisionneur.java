@@ -16,6 +16,8 @@ public abstract class Collisionneur {
     }
 
     public abstract boolean peutBouger(double x, double y);
-    public abstract boolean toucheAutrePiece();
+    public abstract boolean toucheAutrePieceGauche();
+    public abstract boolean toucheAutrePieceDroite();
+    public abstract boolean toucheAutrePieceV();
 
 }
