@@ -16,7 +16,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import modele.pieces.Morceau;
 import modele.pieces.Piece;
-import view.ObjetV.CarreV;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -104,12 +103,8 @@ public class GameManager implements InvalidationListener {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/fxml/Partie.fxml"));
             Scene scene = new Scene(root);
-            primaryStage.setTitle("Tetris");
-            primaryStage.setWidth(650);
-            primaryStage.setHeight(650);
             scene.addEventFilter(KeyEvent.KEY_PRESSED, this::touchesClavier);
             primaryStage.setScene(scene);
-            primaryStage.setResizable(false);
             primaryStage.show();
         } catch (IOException e) {
             System.out.println(e);
@@ -125,35 +120,43 @@ public class GameManager implements InvalidationListener {
     public void touchesClavier(KeyEvent code) {
         switch (code.getCode()) {
             case RIGHT:
-                for (Piece p : jeu.getListePieceEnJeu()) {
-                    if (jeu.getPieceCourante() == p) {
-                        leDeplaceur.deplacerDroite(jeu.getPieceCourante());// move piece courante
-                        leDeplaceur.deplacerDroite(p);// move piece dans liste bindée
+                if(!leBoucleur.getEstEnpause()){
+                    for (Piece p : jeu.getListePieceEnJeu()) {
+                        if (jeu.getPieceCourante() == p) {
+                            leDeplaceur.deplacerDroite(jeu.getPieceCourante());// move piece courante
+                            leDeplaceur.deplacerDroite(p);// move piece dans liste bindée
+                        }
                     }
                 }
                 break;
             case LEFT:
-                for (Piece p : jeu.getListePieceEnJeu()) {
-                    if (jeu.getPieceCourante() == p) {
-                        leDeplaceur.deplacerGauche(jeu.getPieceCourante());// move piece courante
-                        leDeplaceur.deplacerGauche(p);// move piece dans liste bindée
+                if(!leBoucleur.getEstEnpause()){
+                    for (Piece p : jeu.getListePieceEnJeu()) {
+                        if (jeu.getPieceCourante() == p) {
+                            leDeplaceur.deplacerGauche(jeu.getPieceCourante());// move piece courante
+                            leDeplaceur.deplacerGauche(p);// move piece dans liste bindée
+                        }
                     }
                 }
                 break;
             case DOWN:
-                for (Piece p : jeu.getListePieceEnJeu()) {
-                    if (jeu.getPieceCourante() == p) {
-                        leDeplaceur.deplacerBas(jeu.getPieceCourante());// move piece courante
-                        leDeplaceur.deplacerBas(p);// move piece dans liste bindée
+                if(!leBoucleur.getEstEnpause()){
+                    for (Piece p : jeu.getListePieceEnJeu()) {
+                        if (jeu.getPieceCourante() == p) {
+                            leDeplaceur.deplacerBas(jeu.getPieceCourante());// move piece courante
+                            leDeplaceur.deplacerBas(p);// move piece dans liste bindée
+                        }
                     }
                 }
                 break;
             case UP:
-                for (Piece p : jeu.getListePieceEnJeu()) {
-                    if (jeu.getPieceCourante() == p) {
-                        for (Morceau morceau : p.getListeMorceaux()) {
-                            morceau.setY(morceau.getY() - 15);
-                            System.out.println(morceau.getY());
+                if(!leBoucleur.getEstEnpause()){
+                    for (Piece p : jeu.getListePieceEnJeu()) {
+                        if (jeu.getPieceCourante() == p) {
+                            for (Morceau morceau : p.getListeMorceaux()) {
+                                morceau.setY(morceau.getY() - 15);
+                                System.out.println(morceau.getY());
+                            }
                         }
                     }
                 }
@@ -163,6 +166,19 @@ public class GameManager implements InvalidationListener {
                 if (leBoucleur.getEstEnpause()) {
                     leBoucleur.reprendre();
                 } else leBoucleur.pause();
+                break;
+            case ESCAPE:
+                try {
+                    this.leBoucleur.setRunning(false);
+                    this.leBoucleur.removeListener(this);
+                    Parent root = FXMLLoader.load(getClass().getResource("/fxml/Menu.fxml"));
+                    Scene scene = new Scene(root);
+                    scene.addEventFilter(KeyEvent.KEY_PRESSED, this::touchesClavier);
+                    primaryStage.setScene(scene);
+                    primaryStage.show();
+                } catch (IOException e) {
+                    System.out.println(e);
+                }
                 break;
         }
     }
@@ -175,40 +191,17 @@ public class GameManager implements InvalidationListener {
      */
     @Override
     public void invalidated(Observable observable) {
-        boolean shouldCreatePiece = false;
-        if (jeu.getListePieceEnJeu().size() == 1) {
-            if (leCollisionneur.peutBouger(jeu.getPieceCourante().getListeMorceaux().get(0).getX(), jeu.getPieceCourante().getListeMorceaux().get(0).getY())) {
-                leDeplaceur.descendre(jeu.getPieceCourante());// move piece courante
-            } else {
-                shouldCreatePiece = true;
-            }
-            if (shouldCreatePiece) {
-                leCreateur.creerPiece(jeu);
-            }
+       boolean shouldCreatePiece = false;
+        if (leCollisionneur.peutBougerEnBas(jeu.getPieceCourante())){
+            leDeplaceur.descendre(jeu.getPieceCourante());
         } else {
-            if(!leCollisionneur.toucheAutrePieceV()){
-                if (leCollisionneur.peutBouger(jeu.getPieceCourante().getListeMorceaux().get(0).getX(), jeu.getPieceCourante().getListeMorceaux().get(0).getY())) {
-                    leDeplaceur.descendre(jeu.getPieceCourante());// move piece courante
-                } else {
-                    shouldCreatePiece = true;
-                }
-                if (shouldCreatePiece) {
-                    leCreateur.creerPiece(jeu);
-                }
-            }
-            else{
-                if(leCollisionneur.toucheAutrePieceGauche() && !leCollisionneur.toucheAutrePieceDroite()){
-                    if (leCollisionneur.peutBouger(jeu.getPieceCourante().getListeMorceaux().get(0).getX(), jeu.getPieceCourante().getListeMorceaux().get(0).getY())) {
-                        leDeplaceur.descendre(jeu.getPieceCourante());// move piece courante
-                    }
-                }else {
-                    shouldCreatePiece = true;
-                }
-                if (shouldCreatePiece) {
-                    leCreateur.creerPiece(jeu);
-                }
-            }
+            shouldCreatePiece = true;
         }
-//        !leCollisionneur.toucheAutrePiece()
+        if (shouldCreatePiece) {
+            for (Morceau m: jeu.getPieceCourante().getListeMorceaux()){
+                jeu.ajouterMorceau(m);
+            }
+            leCreateur.creerPiece(jeu);
+        }
     }
 }

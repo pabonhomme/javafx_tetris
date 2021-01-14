@@ -1,24 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.Group?>
-<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<?import javafx.scene.layout.Region?>
-<GridPane fx:id="partie" gridLinesVisible="true" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ControllerPartie">
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<GridPane fx:id="partie" gridLinesVisible="true" xmlns="http://javafx.com/javafx/11.0.1"
+          xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ControllerPartie">
     <columnConstraints>
-        <ColumnConstraints percentWidth="70" />
-        <ColumnConstraints percentWidth="30" />
+        <ColumnConstraints percentWidth="70"/>
+        <ColumnConstraints percentWidth="30"/>
     </columnConstraints>
     <rowConstraints>
-        <RowConstraints percentHeight="100" />
+        <RowConstraints percentHeight="100"/>
     </rowConstraints>
     <children>
 
         <Group fx:id="ecran" GridPane.columnIndex="0">
-            <Region style="-fx-border-style: solid; -fx-border-color: black;" prefWidth="420" prefHeight="600"/>
+            <Region prefHeight="600" prefWidth="420" style="-fx-border-style: solid; -fx-border-color: black;"/>
         </Group>
+        <GridPane fx:id="affichage" GridPane.columnIndex="1">
+            <columnConstraints>
+                <ColumnConstraints percentWidth="100"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints percentHeight="25"/>
+                <RowConstraints percentHeight="75"/>
+            </rowConstraints>
+            <BorderPane fx:id="prochainePiece" GridPane.rowIndex="0"
+                        style="-fx-border-style: solid; -fx-border-color: black;">
+                <top>
+                    <Label text="Prochaine pièce :" BorderPane.alignment="CENTER" style="-fx-font-size: 15pt;"/>
+                </top>
+                <children>
+
+                </children>
+            </BorderPane>
+            <BorderPane fx:id="score" GridPane.rowIndex="1" style="-fx-border-style: solid; -fx-border-color: black;">
+                <top>
+                    <Label text="Score :" BorderPane.alignment="CENTER" style="-fx-font-size: 15pt;"/>
+                </top>
+                <center>
+                    <GridPane alignment="CENTER">
+                        <columnConstraints>
+                            <ColumnConstraints/>
+                            <ColumnConstraints/>
+                        </columnConstraints>
+                        <rowConstraints>
+                            <RowConstraints/>
+                            <RowConstraints/>
+                            <RowConstraints/>
+                            <RowConstraints/>
+                            <RowConstraints/>
+                        </rowConstraints>
+
+                        <Label text="Gauche :" GridPane.rowIndex="0" GridPane.columnIndex="0"
+                               style="-fx-font-size: 15pt;"/>
+                        <ImageView fitWidth="35" fitHeight="35" GridPane.rowIndex="0" GridPane.columnIndex="1">
+                            <Image url="/img/key_left.png"/>
+                        </ImageView>
+                        <Label text="Droite :" GridPane.rowIndex="1" GridPane.columnIndex="0"
+                               style="-fx-font-size: 15pt;"/>
+                        <ImageView fitWidth="35" fitHeight="35" GridPane.rowIndex="1" GridPane.columnIndex="1">
+                            <Image url="/img/key_right.png"/>
+                        </ImageView>
+                        <Label text="Descendre :" GridPane.rowIndex="2" GridPane.columnIndex="0"
+                               style="-fx-font-size: 15pt;"/>
+                        <ImageView fitWidth="35" fitHeight="35" GridPane.rowIndex="2" GridPane.columnIndex="1">
+                            <Image url="/img/key_down.png"/>
+                        </ImageView>
+                        <Label text="Pause :" GridPane.rowIndex="3" GridPane.columnIndex="0"
+                               style="-fx-font-size: 15pt;"/>
+                        <ImageView fitWidth="35" fitHeight="35" GridPane.rowIndex="3" GridPane.columnIndex="1">
+                            <Image url="/img/space.png"/>
+                        </ImageView>
+                        <Label text="Quitter :" GridPane.rowIndex="4" GridPane.columnIndex="0"
+                               style="-fx-font-size: 15pt;"/>
+                        <ImageView fitWidth="35" fitHeight="35" GridPane.rowIndex="4" GridPane.columnIndex="1">
+                            <Image url="/img/echap.png"/>
+                        </ImageView>
+                    </GridPane>
+                </center>
+
+                <children>
+
+                </children>
+            </BorderPane>
+        </GridPane>
     </children>
 </GridPane>

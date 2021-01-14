@@ -13,10 +13,10 @@ public class Partie {
     private int score;
     private Joueur joueurEnCours;
     private Piece pieceCourante;
-    private CarreV pieceCouranteV;
+    private Piece pieceSuivante;
     private Boolean estFini;
     private ObservableList<Piece> listePieceEnJeu = FXCollections.observableArrayList();
-    private ObservableList<CarreV> listePieceEnJeuV = FXCollections.observableArrayList(); // liste de piece vue pr tester collision
+  private ObservableList<Morceau> listeMorceauEnJeu = FXCollections.observableArrayList();
     private ArrayList<String> listePiece;
 
     public int getScore() {
@@ -75,25 +75,21 @@ public class Partie {
 
         listePieceEnJeu.add(p);
     }
+  public ObservableList<Morceau> getListeMorceauEnJeu() {
 
-    public void ajouterPieceV(CarreV p){
-
-        listePieceEnJeuV.add(p);
+        return listeMorceauEnJeu;
     }
 
-    public ObservableList<CarreV> getListePieceEnJeuV() {
-        return listePieceEnJeuV;
+    public void ajouterMorceau(Morceau m){
+
+        listeMorceauEnJeu.add(m);
     }
 
-    public void setListePieceEnJeuV(ObservableList<CarreV> listePieceEnJeuV) {
-        this.listePieceEnJeuV = listePieceEnJeuV;
+    public Piece getPieceSuivante() {
+        return pieceSuivante;
     }
 
-    public CarreV getPieceCouranteV() {
-        return pieceCouranteV;
-    }
-
-    public void setPieceCouranteV(CarreV pieceCouranteV) {
-        this.pieceCouranteV = pieceCouranteV;
+    public void setPieceSuivante(Piece pieceSuivante) {
+        this.pieceSuivante = pieceSuivante;
     }
 }

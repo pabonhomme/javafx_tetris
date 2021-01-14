@@ -13,41 +13,68 @@ public class CollisionneurPiece extends Collisionneur {
     }
 
     @Override
-    public boolean toucheAutrePieceGauche() {
-
-        for (Piece p : jeu.getListePieceEnJeu()) {
-            if (jeu.getPieceCourante() != p) {
-                if (jeu.getPieceCourante().getListeMorceaux().get(1).getX() == p.getListeMorceaux().get(0).getX()) {
-                    return true;
+    public boolean peutBougerEnBas(Piece p) {
+        boolean ind = true;
+        for (Morceau m : p.getListeMorceaux()) {
+            System.out.println(m.getX());
+            if (m.getY() >= height - 30 || m.getY() < 0) {
+                return false;
+            }
+            if (jeu.getListeMorceauEnJeu().size() > 1) {
+                for (Morceau m2 : jeu.getListeMorceauEnJeu()) {
+                    if (m.getY() + 30 == m2.getY() && m.getX() == m2.getX()) {
+                        return false;
+                    }
                 }
             }
         }
-        return false;
+        return true;
     }
 
     @Override
-    public boolean toucheAutrePieceDroite() {
-
-        for (Piece p : jeu.getListePieceEnJeu()) {
-            if (jeu.getPieceCourante() != p) {
-                if (jeu.getPieceCourante().getListeMorceaux().get(1).getX() == p.getListeMorceaux().get(0).getX() + 84) {
-                    return true;
+    public boolean peutBougerDroite(Piece p) {
+        for (Morceau m : p.getListeMorceaux()) {
+            if (m.getX() + 42 >= width) {
+                return false;
+            }
+            if (jeu.getListeMorceauEnJeu().size() > 1) {
+                for (Morceau m2 : jeu.getListeMorceauEnJeu()) {
+                    if (m.getY() == m2.getY() && m.getX() + 42 == m2.getX()) {
+                        return false;
+                    }
+                    if (m.getY() == m2.getY() + 15 && m.getX() + 42 == m2.getX()) {
+                        return false;
+                    }
+                    if (m.getY() == m2.getY() - 15 && m.getX() + 42 == m2.getX()) {
+                        return false;
+                    }
                 }
             }
         }
-        return false;
+        return true;
     }
 
-        @Override
-    public boolean toucheAutrePieceV() {
-        for (CarreV carreV : jeu.getListePieceEnJeuV()) {
-            if(carreV != jeu.getPieceCouranteV()){
-                if(jeu.getPieceCouranteV().getBoundsInParent().intersects(carreV.getBoundsInParent())){
-                    return true;
+    @Override
+    public boolean peutBougerGauche(Piece p) {
+        for (Morceau m : p.getListeMorceaux()) {
+            if (m.getX() - 21 < 0) {
+                return false;
+            }
+            if (jeu.getListeMorceauEnJeu().size() > 1) {
+                for (Morceau m2 : jeu.getListeMorceauEnJeu()) {
+                    if (m.getY() == m2.getY() && m.getX() - 42 == m2.getX()) {
+                        return false;
+                    }
+                    if (m.getY() == m2.getY() + 15 && m.getX() - 42 == m2.getX()) {
+                        return false;
+                    }
+                    if (m.getY() == m2.getY() - 15 && m.getX() - 42 == m2.getX()) {
+                        return false;
+                    }
                 }
             }
         }
-        return false;
+        return true;
     }
 
 
