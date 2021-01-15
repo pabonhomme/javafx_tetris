@@ -12,20 +12,20 @@ public class Baton extends Piece{
     // créé en vertical
     public void creationMorceaux(int x, int y){
         int i = 0;
-        // premier morceau bas gauche
+        // premier morceau haut
         listeMorceaux.get(i).setX(x);
         listeMorceaux.get(i).setY(y);
 
-        // deuxième morceau
-        listeMorceaux.get(i+1).setX(x+1);
-        listeMorceaux.get(i+1).setY(y);
+        // deuxième morceau 2eme haut
+        listeMorceaux.get(i+1).setX(x);
+        listeMorceaux.get(i+1).setY(y+30);
 
-        // troisème morceau
-        listeMorceaux.get(i+2).setX(x+2);
-        listeMorceaux.get(i+2).setY(y);
+        // troisème morceau 2eme bas
+        listeMorceaux.get(i+2).setX(x);
+        listeMorceaux.get(i+2).setY(y+60);
 
-        // quatrième morceau
-        listeMorceaux.get(i+3).setX(x+3);
-        listeMorceaux.get(i+3).setY(y);
+        // quatrième morceau bas
+        listeMorceaux.get(i+3).setX(x);
+        listeMorceaux.get(i+3).setY(y+90);
     }
 }

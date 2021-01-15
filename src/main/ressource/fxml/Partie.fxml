@@ -30,19 +30,22 @@
                 <ColumnConstraints percentWidth="100"/>
             </columnConstraints>
             <rowConstraints>
-                <RowConstraints percentHeight="25"/>
-                <RowConstraints percentHeight="75"/>
+                <RowConstraints percentHeight="5"/>
+                <RowConstraints percentHeight="35"/>
+                <RowConstraints percentHeight="60"/>
             </rowConstraints>
-            <BorderPane fx:id="prochainePiece" GridPane.rowIndex="0"
-                        style="-fx-border-style: solid; -fx-border-color: black;">
+            <BorderPane GridPane.rowIndex="0">
                 <top>
                     <Label text="Prochaine pièce :" BorderPane.alignment="CENTER" style="-fx-font-size: 15pt;"/>
                 </top>
+            </BorderPane>
+            <BorderPane fx:id="prochainePiece" GridPane.rowIndex="1"
+                        style="-fx-border-style: solid; -fx-border-color: black;">
                 <children>
 
                 </children>
             </BorderPane>
-            <BorderPane fx:id="score" GridPane.rowIndex="1" style="-fx-border-style: solid; -fx-border-color: black;">
+            <BorderPane fx:id="score" GridPane.rowIndex="2" style="-fx-border-style: solid; -fx-border-color: black;">
                 <top>
                     <Label text="Score :" BorderPane.alignment="CENTER" style="-fx-font-size: 15pt;"/>
                 </top>

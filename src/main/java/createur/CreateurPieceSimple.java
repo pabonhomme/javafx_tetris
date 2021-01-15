@@ -2,6 +2,7 @@ package createur;
 
 import javafx.scene.paint.Color;
 import modele.Partie;
+import modele.pieces.Baton;
 import modele.pieces.Carre;
 import modele.pieces.Piece;
 
@@ -28,14 +29,14 @@ public class CreateurPieceSimple extends CreateurPiece {
                 Piece carre4 = new Carre(126, 0, Color.GREEN);
                 return carre4;
             case 4:
-                Piece carre5 = new Carre(168, 0, Color.WHITESMOKE);
-                return carre5;
+                Piece baton1 = new Baton(168, 0, Color.WHITESMOKE);
+                return baton1;
             case 5:
-                Piece carre6 = new Carre(210, 0, Color.CYAN);
-                return carre6;
+                Piece baton2 = new Baton(210, 0, Color.CYAN);
+                return baton2;
             case 6:
-                Piece carre7 = new Carre(252, 0, Color.DARKBLUE);
-                return carre7;
+                Piece baton3 = new Baton(252, 0, Color.DARKBLUE);
+                return baton3;
         }
         return null;
     }
