@@ -8,14 +8,21 @@ import view.ObjetV.CarreV;
 public class CollisionneurPiece extends Collisionneur {
 
     @Override
-    public boolean peutBouger(double x, double y) {
-        return x >= 0 && x <= width - 84 && y < height - 60; // marche pour un carré, à voir pr autres pieces
+    public boolean toucheHautEcran() {
+        if (jeu.getListeMorceauEnJeu().size() > 1) {
+            for (Morceau m : jeu.getListeMorceauEnJeu()) {
+                    if (m.getY() == 0){
+                        return true;
+                    }
+            }
+        }
+        return false;
     }
 
     @Override
-    public boolean peutBougerEnBas(Piece p) {
+    public boolean peutBougerEnBas() {
         boolean ind = true;
-        for (Morceau m : p.getListeMorceaux()) {
+        for (Morceau m : jeu.getPieceCourante().getListeMorceaux()) {
             System.out.println(m.getX());
             if (m.getY() >= height - 30 || m.getY() < 0) {
                 return false;
@@ -32,8 +39,8 @@ public class CollisionneurPiece extends Collisionneur {
     }
 
     @Override
-    public boolean peutBougerDroite(Piece p) {
-        for (Morceau m : p.getListeMorceaux()) {
+    public boolean peutBougerDroite() {
+        for (Morceau m : jeu.getPieceCourante().getListeMorceaux()) {
             if (m.getX() + 42 >= width) {
                 return false;
             }
@@ -55,8 +62,8 @@ public class CollisionneurPiece extends Collisionneur {
     }
 
     @Override
-    public boolean peutBougerGauche(Piece p) {
-        for (Morceau m : p.getListeMorceaux()) {
+    public boolean peutBougerGauche() {
+        for (Morceau m : jeu.getPieceCourante().getListeMorceaux()) {
             if (m.getX() - 21 < 0) {
                 return false;
             }

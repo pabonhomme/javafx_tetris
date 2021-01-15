@@ -18,7 +18,7 @@ public class DeplaceurPiece extends Deplaceur{
 //                System.out.println(morceau.getY());
             }
         }*/
-        if(leCollisionneur.peutBougerEnBas(p)){
+        if(leCollisionneur.peutBougerEnBas()){
             for (Morceau morceau:p.getListeMorceaux()) {
                 morceau.setY(morceau.getY() + 7.5); // de 15 en 15 pour pas aller trop vite car height morceau = 30
             }
@@ -27,7 +27,7 @@ public class DeplaceurPiece extends Deplaceur{
 
     @Override
     public void deplacerDroite(Piece p) {
-        if(leCollisionneur.peutBougerDroite(p)){
+        if(leCollisionneur.peutBougerDroite()){
             for (Morceau morceau:p.getListeMorceaux()) {
                 morceau.setX(morceau.getX() + 21);// de 21 en 21 pour pas aller trop vite car width morceau = 42
             }
@@ -36,7 +36,7 @@ public class DeplaceurPiece extends Deplaceur{
 
     @Override
     public void deplacerGauche(Piece p) {
-        if(leCollisionneur.peutBougerGauche(p)){
+        if(leCollisionneur.peutBougerGauche()){
             for (Morceau morceau:p.getListeMorceaux()) {
                 morceau.setX(morceau.getX() - 21);// de 21 en 21 pour pas aller trop vite car width morceau = 42
             }

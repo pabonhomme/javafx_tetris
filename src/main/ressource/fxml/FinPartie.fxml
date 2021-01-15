@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="view.ControllerFinPartie">
+    <columnConstraints>
+        <ColumnConstraints percentWidth="10"/>
+        <ColumnConstraints percentWidth="80"/>
+        <ColumnConstraints percentWidth="10"/>
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints percentHeight="20" />
+        <RowConstraints percentHeight="20" />
+        <RowConstraints percentHeight="10" />
+        <RowConstraints percentHeight="20" />
+        <RowConstraints percentHeight="10" />
+        <RowConstraints percentHeight="20" />
+    </rowConstraints>
+    <children>
+        <Label text="La partie est terminée ! Bien joué !" style="-fx-font-size: 15pt;" GridPane.columnIndex="1" GridPane.halignment="CENTER"/>
+        <Button onAction="#clickRejouer" mnemonicParsing="false" prefHeight="74.0" prefWidth="129.0" text="Rejouer" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+        <Button onAction="#clickMenu" mnemonicParsing="false" prefHeight="62.0" prefWidth="142.0" text="Menu" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+        <Button onAction="#clickQuitter" mnemonicParsing="false" prefHeight="68.0" prefWidth="134.0" text="Quitter" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
+    </children>
+
+</GridPane>

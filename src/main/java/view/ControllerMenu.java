@@ -23,6 +23,11 @@ public class ControllerMenu {
     }
 
     @FXML
+    private void clickQuitter(){
+        gmanager.getPrimaryStage().close();
+    }
+
+    @FXML
     public void initialize() {
 
     }

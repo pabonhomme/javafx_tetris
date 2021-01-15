@@ -117,10 +117,14 @@ public class GameManager implements InvalidationListener {
         primaryStage = pPrimaryStage;
     }
 
+    public Stage getPrimaryStage() {
+        return primaryStage;
+    }
+
     public void touchesClavier(KeyEvent code) {
         switch (code.getCode()) {
             case RIGHT:
-                if(!leBoucleur.getEstEnpause()){
+                if (!leBoucleur.getEstEnpause()) {
                     for (Piece p : jeu.getListePieceEnJeu()) {
                         if (jeu.getPieceCourante() == p) {
                             leDeplaceur.deplacerDroite(jeu.getPieceCourante());// move piece courante
@@ -130,7 +134,7 @@ public class GameManager implements InvalidationListener {
                 }
                 break;
             case LEFT:
-                if(!leBoucleur.getEstEnpause()){
+                if (!leBoucleur.getEstEnpause()) {
                     for (Piece p : jeu.getListePieceEnJeu()) {
                         if (jeu.getPieceCourante() == p) {
                             leDeplaceur.deplacerGauche(jeu.getPieceCourante());// move piece courante
@@ -140,7 +144,7 @@ public class GameManager implements InvalidationListener {
                 }
                 break;
             case DOWN:
-                if(!leBoucleur.getEstEnpause()){
+                if (!leBoucleur.getEstEnpause()) {
                     for (Piece p : jeu.getListePieceEnJeu()) {
                         if (jeu.getPieceCourante() == p) {
                             leDeplaceur.deplacerBas(jeu.getPieceCourante());// move piece courante
@@ -150,7 +154,7 @@ public class GameManager implements InvalidationListener {
                 }
                 break;
             case UP:
-                if(!leBoucleur.getEstEnpause()){
+                if (!leBoucleur.getEstEnpause()) {
                     for (Piece p : jeu.getListePieceEnJeu()) {
                         if (jeu.getPieceCourante() == p) {
                             for (Morceau morceau : p.getListeMorceaux()) {
@@ -173,7 +177,6 @@ public class GameManager implements InvalidationListener {
                     this.leBoucleur.removeListener(this);
                     Parent root = FXMLLoader.load(getClass().getResource("/fxml/Menu.fxml"));
                     Scene scene = new Scene(root);
-                    scene.addEventFilter(KeyEvent.KEY_PRESSED, this::touchesClavier);
                     primaryStage.setScene(scene);
                     primaryStage.show();
                 } catch (IOException e) {
@@ -185,23 +188,38 @@ public class GameManager implements InvalidationListener {
 
 
     /**
-     * méthode qui s'éxécute en boucle dans beep dans le boucleur
+     * méthode qui s'éxécute en boucle dans beep dans le boucleur de jeu
      *
      * @param observable
      */
     @Override
     public void invalidated(Observable observable) {
-       boolean shouldCreatePiece = false;
-        if (leCollisionneur.peutBougerEnBas(jeu.getPieceCourante())){
-            leDeplaceur.descendre(jeu.getPieceCourante());
+        boolean shouldCreatePiece = false;
+        if (leCollisionneur.peutBougerEnBas()) { // si peut descendre
+            leDeplaceur.descendre(jeu.getPieceCourante()); // on la descend
         } else {
-            shouldCreatePiece = true;
+            shouldCreatePiece = true; // sinon elle est tout en bas et on va créer une piece
         }
-        if (shouldCreatePiece) {
-            for (Morceau m: jeu.getPieceCourante().getListeMorceaux()){
-                jeu.ajouterMorceau(m);
+
+        if (shouldCreatePiece) { // si on doit créer une pièce
+            for (Morceau m : jeu.getPieceCourante().getListeMorceaux()) {
+                jeu.ajouterMorceau(m); // ajout des morceaux de la pièce courante avant création pièce car sinon ils se comparent à eux-même dans collisionneur
             }
-            leCreateur.creerPiece(jeu);
+            if (leCollisionneur.toucheHautEcran()) { // si une pièce est tout en heut quand on veut créer une nouvelle
+                try {
+                    this.leBoucleur.setRunning(false); // on arrête le boucleur
+                    this.leBoucleur.removeListener(this); // on supprime notre classe de la liste des observé de notre boucleur
+                    Parent root = FXMLLoader.load(getClass().getResource("/fxml/FinPartie.fxml"));
+                    Scene scene = new Scene(root);
+                    primaryStage.setScene(scene);
+                    primaryStage.show();
+                } catch (IOException e) {
+                    System.out.println(e);
+                }
+            } else {
+                leCreateur.creerPiece(jeu); // si tout est ok, création d'une nouvelle pièce
+            }
+
         }
     }
 }

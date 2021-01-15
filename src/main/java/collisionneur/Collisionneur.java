@@ -15,12 +15,12 @@ public abstract class Collisionneur {
         this.jeu = jeu;
     }
 
-    public abstract boolean peutBouger(double x, double y);
+    public abstract boolean toucheHautEcran();
 
-    public abstract boolean peutBougerEnBas(Piece p);
+    public abstract boolean peutBougerEnBas();
 
-    public abstract boolean peutBougerDroite(Piece p);
+    public abstract boolean peutBougerDroite();
 
-    public abstract boolean peutBougerGauche(Piece p);
+    public abstract boolean peutBougerGauche();
 
 }

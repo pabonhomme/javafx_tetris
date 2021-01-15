@@ -10,7 +10,7 @@
    <children>
       <Button onAction="#clickJouer" mnemonicParsing="false" prefHeight="74.0" prefWidth="129.0" text="Jouer" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
       <Button mnemonicParsing="false" prefHeight="62.0" prefWidth="142.0" text="Option" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
-      <Button mnemonicParsing="false" prefHeight="68.0" prefWidth="134.0" text="Quitter" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
+      <Button onAction="#clickQuitter" mnemonicParsing="false" prefHeight="68.0" prefWidth="134.0" text="Quitter" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
       <Label GridPane.halignment="CENTER" contentDisplay="CENTER" text="TETRIS" GridPane.columnIndex="1" />
    </children>
    <columnConstraints>
