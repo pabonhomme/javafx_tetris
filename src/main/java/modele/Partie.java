@@ -87,6 +87,10 @@ public class Partie {
 
         listeMorceauEnJeu.add(m);
     }
+    public void suppMorceau(Morceau m){
+
+        listeMorceauEnJeu.remove(m);
+    }
 
     public Piece getPieceSuivante() {
 
@@ -96,5 +100,29 @@ public class Partie {
     public void setPieceSuivante(Piece pieceSuivante) {
 
         this.pieceSuivante = pieceSuivante;
+    }
+
+    public ArrayList<Integer>  peutSupprimer(){ //retourner les lignes remplie de morceaux à supprimer
+        ArrayList<Integer> ligne= new ArrayList<>(20);
+        ArrayList<Integer> ret= new ArrayList<>();
+        for (int i=0; i<20;i++){
+            ligne.add(0);
+        }
+        for (Morceau m : this.getListeMorceauEnJeu()) {
+            if (m.getY()==570)
+                ligne.set(0,ligne.get(0)+1);
+            else if (m.getY()==540)
+                ligne.set(1,ligne.get(1)+1);
+        }
+        for (int i=0; i<20;i++){
+            if (ligne.get(i)==10)
+                switch(i){
+                    case 0:
+                        ret.add(570);
+                    case 1:
+                        ret.add(540);
+                }
+        }
+        return ret;
     }
 }

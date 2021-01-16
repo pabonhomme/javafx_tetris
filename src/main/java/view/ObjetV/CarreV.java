@@ -1,5 +1,7 @@
 package view.ObjetV;
 
+import javafx.collections.ObservableList;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.paint.Color;
 import modele.pieces.Morceau;
@@ -17,6 +19,7 @@ public class CarreV extends Parent {
     public void addMorceauV(MorceauV m){
         this.getChildren().add(m);
     }
+
 
     public CarreV(Piece piece){
         for (Morceau morceau : piece.getListeMorceaux()) {

@@ -9,7 +9,6 @@ public abstract class Piece {
     protected ArrayList<Morceau> listeMorceaux;
 
     public Color getCouleur() {
-
         return couleur;
     }
 
@@ -33,7 +32,7 @@ public abstract class Piece {
         this.couleur = couleur;
         this.listeMorceaux = new ArrayList<Morceau>();
         for(int i =0; i<4; i++){
-            this.listeMorceaux.add(new Morceau());
+            this.listeMorceaux.add(new Morceau(couleur));
         }
     }
 

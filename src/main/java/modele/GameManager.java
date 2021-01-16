@@ -9,6 +9,7 @@ import deplaceur.Deplaceur;
 import deplaceur.DeplaceurPiece;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -212,6 +213,19 @@ public class GameManager implements InvalidationListener {
         if (shouldCreatePiece) { // si on doit créer une pièce
             for (Morceau m : jeu.getPieceCourante().getListeMorceaux()) {
                 jeu.ajouterMorceau(m); // ajout des morceaux de la pièce courante avant création pièce car sinon ils se comparent à eux-même dans collisionneur
+            }
+            ArrayList<Integer> l=jeu.peutSupprimer(); //récupère les lignes à vider
+            while(!l.isEmpty()){
+                ArrayList<Morceau> tmp = new ArrayList<>(); //On fait une copie de la liste de morceaux en jeu
+                for (Morceau m : jeu.getListeMorceauEnJeu()) {
+                    tmp.add(m);
+                }
+                for (Morceau m : tmp) { //On regarde chaques morceaux en jeu dans la liste copiée
+                    if (m.getY()==l.get(0)){ //ON regarde si le morceau fait parti de la ligne à vider
+                        jeu.suppMorceau(m); //On supprimer le morceau de la liste de morceaux en jeu
+                    }
+                }
+                l.remove(0); //ON enlève la ligne vidée de la liste de ligne à vider
             }
             if (leCollisionneur.toucheHautEcran()) { // si une pièce est tout en heut quand on veut créer une nouvelle
                 try {

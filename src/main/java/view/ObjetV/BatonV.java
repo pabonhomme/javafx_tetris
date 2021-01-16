@@ -1,5 +1,7 @@
 package view.ObjetV;
 
+import javafx.collections.ObservableList;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.paint.Color;
 import modele.pieces.Morceau;
