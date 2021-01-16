@@ -6,24 +6,26 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane alignment="CENTER" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ControllerMenu">
-   <children>
+<GridPane alignment="CENTER" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ControllerMenu" gridLinesVisible="false">
+    <columnConstraints>
+        <ColumnConstraints percentWidth="30" />
+        <ColumnConstraints percentWidth="40" />
+        <ColumnConstraints percentWidth="30" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints percentHeight="20.0" />
+        <RowConstraints percentHeight="20" />
+        <RowConstraints percentHeight="10" />
+        <RowConstraints percentHeight="20" />
+        <RowConstraints percentHeight="10" />
+        <RowConstraints percentHeight="20" />
+    </rowConstraints>
+    <Label fx:id="labelListeJoueurs" wrapText="true" text="Meilleurs joueurs : " style="-fx-font-size: 15pt;" GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.halignment="CENTER"/>
+
+    <children>
       <Button onAction="#clickJouer" mnemonicParsing="false" prefHeight="74.0" prefWidth="129.0" text="Jouer" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
       <Button mnemonicParsing="false" prefHeight="62.0" prefWidth="142.0" text="Option" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
       <Button onAction="#clickQuitter" mnemonicParsing="false" prefHeight="68.0" prefWidth="134.0" text="Quitter" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
       <Label GridPane.halignment="CENTER" contentDisplay="CENTER" text="TETRIS" GridPane.columnIndex="1" />
    </children>
-   <columnConstraints>
-       <ColumnConstraints percentWidth="30" />
-       <ColumnConstraints percentWidth="40" />
-       <ColumnConstraints percentWidth="30" />
-   </columnConstraints>
-   <rowConstraints>
-       <RowConstraints percentHeight="20.0" />
-       <RowConstraints percentHeight="20" />
-       <RowConstraints percentHeight="10" />
-       <RowConstraints percentHeight="20" />
-       <RowConstraints percentHeight="10" />
-       <RowConstraints percentHeight="20" />
-   </rowConstraints>
 </GridPane>

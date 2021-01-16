@@ -29,6 +29,7 @@ public class GameManager implements InvalidationListener {
     private final Collisionneur leCollisionneur = new CollisionneurPiece();
     private final Deplaceur leDeplaceur = new DeplaceurPiece(leCollisionneur);
     private ArrayList<Joueur> top10Joueurs;
+    private Joueur joueurEnCours = new Joueur();
     private Stage primaryStage;
 
     private GameManager() {
@@ -76,14 +77,21 @@ public class GameManager implements InvalidationListener {
         return top10Joueurs;
     }
 
+    public Joueur getJoueurEnCours() {
+        return joueurEnCours;
+    }
+
+    public void setJoueurEnCours(Joueur joueurEnCours) {
+        this.joueurEnCours = joueurEnCours;
+    }
+
     public void setTop10Joueurs(ArrayList<Joueur> top10Joueurs) {
 
         this.top10Joueurs = top10Joueurs;
     }
 
-
     public void lancerPartie() {
-        setJeu(new Partie());
+        this.setJeu(new Partie());
         leCreateur.creerPiece(jeu);
         leCollisionneur.setJeu(jeu);
         options = new Option(50);
@@ -92,14 +100,14 @@ public class GameManager implements InvalidationListener {
         new Thread(leBoucleur).start();
     }
 
-    public void recupNomJoueur(String pseudo) {
+    public void setPseudoPartie(String pseudo) {
 
         jeu.setPseudoJoueur(pseudo);
     }
 
-
-    public void chargerEcranPartie() {
+    public void chargerEcranPartie(String pseudo) {
         lancerPartie();
+        joueurEnCours.setPseudo(pseudo);
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/fxml/Partie.fxml"));
             Scene scene = new Scene(root);
@@ -222,4 +230,6 @@ public class GameManager implements InvalidationListener {
 
         }
     }
+
+
 }

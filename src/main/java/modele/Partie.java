@@ -1,6 +1,7 @@
 package modele;
 
 import javafx.beans.Observable;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import modele.pieces.Morceau;
@@ -10,21 +11,20 @@ import view.ObjetV.CarreV;
 import java.util.ArrayList;
 
 public class Partie {
-    private int score;
+    private SimpleIntegerProperty score;
     private Joueur joueurEnCours;
     private Piece pieceCourante;
     private Piece pieceSuivante;
     private Boolean estFini;
     private ObservableList<Piece> listePieceEnJeu = FXCollections.observableArrayList();
-  private ObservableList<Morceau> listeMorceauEnJeu = FXCollections.observableArrayList();
-    private ArrayList<String> listePiece;
+    private ObservableList<Morceau> listeMorceauEnJeu = FXCollections.observableArrayList();
 
-    public int getScore() {
+    public SimpleIntegerProperty getScore() {
 
         return score;
     }
 
-    public void setScore(int score) {
+    public void setScore(SimpleIntegerProperty score) {
 
         this.score = score;
     }
@@ -55,14 +55,17 @@ public class Partie {
     }
 
     public void setEstFini(Boolean estFini) {
+
         this.estFini = estFini;
     }
 
     public Partie(){
-        this.score=0;
+        this.score=new SimpleIntegerProperty(0);
         this.estFini = false;
+        joueurEnCours = new Joueur();
     }
     public void setPseudoJoueur(String pseudo){
+
         this.joueurEnCours.setPseudo(pseudo);
     }
 
@@ -86,10 +89,12 @@ public class Partie {
     }
 
     public Piece getPieceSuivante() {
+
         return pieceSuivante;
     }
 
     public void setPieceSuivante(Piece pieceSuivante) {
+
         this.pieceSuivante = pieceSuivante;
     }
 }

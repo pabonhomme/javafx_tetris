@@ -12,14 +12,20 @@ public class Joueur {
 
         this.pseudo = pseudo;
     }
-    public int getScore(){
 
-        return score;
-    }
     public String getPseudo() {
 
         return pseudo;
     }
-    // Je n'ai encore aucune idée de comment vontre être initalisée nos méthodes
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public int getScore(){
+
+        return score;
+    }
+
 
 }

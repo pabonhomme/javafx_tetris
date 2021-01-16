@@ -1,6 +1,9 @@
 package view;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
@@ -14,16 +17,20 @@ public class ControllerMenu {
     GameManager gmanager = GameManager.getInstance();
 
     @FXML
-    private void clickJouer(){
+    private void clickJouer() {
         try {
-            gmanager.chargerEcranPartie();
-        }catch (Exception e){
+            Parent root = FXMLLoader.load(getClass().getResource("/fxml/Pseudo.fxml"));
+            Scene scene = new Scene(root);
+            gmanager.getPrimaryStage().setScene(scene);
+            gmanager.getPrimaryStage().show();
+        } catch (IOException e) {
             System.out.println(e);
         }
     }
 
     @FXML
-    private void clickQuitter(){
+    private void clickQuitter() {
+
         gmanager.getPrimaryStage().close();
     }
 

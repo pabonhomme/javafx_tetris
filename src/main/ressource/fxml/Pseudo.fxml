@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="view.ControllerPseudo">
+    <center>
+        <GridPane alignment="CENTER" gridLinesVisible="false">
+            <columnConstraints>
+                <ColumnConstraints/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints percentHeight="33"/>
+                <RowConstraints percentHeight="20"/>
+                <RowConstraints percentHeight="34"/>
+            </rowConstraints>
+
+            <Label text="Ecrivez un pseudo pour commencer"
+                   style="-fx-font-size: 15pt; -fx-border-insets: 10px;" GridPane.valignment="BOTTOM"/>
+            <TextField fx:id="pseudo" GridPane.rowIndex="1" />
+            <Button onAction="#clickJouer" disable="${pseudo.text == ''}" mnemonicParsing="false" prefHeight="74.0" prefWidth="129.0" text="Jouer" textAlignment="CENTER" GridPane.valignment="TOP" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+        </GridPane>
+
+    </center>
+</BorderPane>
