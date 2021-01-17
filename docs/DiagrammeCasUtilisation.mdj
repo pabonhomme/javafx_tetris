@@ -20,101 +20,6 @@
 					"name": "UseCaseDiagram1",
 					"ownedViews": [
 						{
-							"_type": "UMLUseCaseSubjectView",
-							"_id": "AAAAAAF2AE4g0b9qGLc=",
-							"_parent": {
-								"$ref": "AAAAAAF2AEyl+78g5L4="
-							},
-							"model": {
-								"$ref": "AAAAAAF2AE4g0b9oQLM="
-							},
-							"subViews": [
-								{
-									"_type": "UMLNameCompartmentView",
-									"_id": "AAAAAAF2AE4g0b9rIFY=",
-									"_parent": {
-										"$ref": "AAAAAAF2AE4g0b9qGLc="
-									},
-									"model": {
-										"$ref": "AAAAAAF2AE4g0b9oQLM="
-									},
-									"subViews": [
-										{
-											"_type": "LabelView",
-											"_id": "AAAAAAF2AE4g0b9s/Ug=",
-											"_parent": {
-												"$ref": "AAAAAAF2AE4g0b9rIFY="
-											},
-											"visible": false,
-											"font": "Arial;13;0",
-											"height": 13
-										},
-										{
-											"_type": "LabelView",
-											"_id": "AAAAAAF2AE4g0b9tgvk=",
-											"_parent": {
-												"$ref": "AAAAAAF2AE4g0b9rIFY="
-											},
-											"font": "Arial;13;1",
-											"left": 573,
-											"top": 823,
-											"width": 109.10986328125,
-											"height": 13,
-											"text": "UseCaseSubject1"
-										},
-										{
-											"_type": "LabelView",
-											"_id": "AAAAAAF2AE4g0r9u77Q=",
-											"_parent": {
-												"$ref": "AAAAAAF2AE4g0b9rIFY="
-											},
-											"visible": false,
-											"font": "Arial;13;0",
-											"width": 80.9072265625,
-											"height": 13,
-											"text": "(from Model1)"
-										},
-										{
-											"_type": "LabelView",
-											"_id": "AAAAAAF2AE4g0r9v1co=",
-											"_parent": {
-												"$ref": "AAAAAAF2AE4g0b9rIFY="
-											},
-											"visible": false,
-											"font": "Arial;13;0",
-											"height": 13,
-											"horizontalAlignment": 1
-										}
-									],
-									"font": "Arial;13;0",
-									"left": 568,
-									"top": 816,
-									"width": 119.10986328125,
-									"height": 25,
-									"stereotypeLabel": {
-										"$ref": "AAAAAAF2AE4g0b9s/Ug="
-									},
-									"nameLabel": {
-										"$ref": "AAAAAAF2AE4g0b9tgvk="
-									},
-									"namespaceLabel": {
-										"$ref": "AAAAAAF2AE4g0r9u77Q="
-									},
-									"propertyLabel": {
-										"$ref": "AAAAAAF2AE4g0r9v1co="
-									}
-								}
-							],
-							"font": "Arial;13;0",
-							"left": 568,
-							"top": 816,
-							"width": 119.10986328125,
-							"height": 25,
-							"nameCompartment": {
-								"$ref": "AAAAAAF2AE4g0b9rIFY="
-							}
-						},
-						{
 							"_type": "UMLActorView",
 							"_id": "AAAAAAF2AGO4vb+sVaU=",
 							"_parent": {
@@ -2947,14 +2852,6 @@
 							}
 						}
 					]
-				},
-				{
-					"_type": "UMLUseCaseSubject",
-					"_id": "AAAAAAF2AE4g0b9oQLM=",
-					"_parent": {
-						"$ref": "AAAAAAF2AEyl+r8fDVU="
-					},
-					"name": "UseCaseSubject1"
 				},
 				{
 					"_type": "UMLPackage",
