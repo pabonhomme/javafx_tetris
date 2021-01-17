@@ -1,11 +1,14 @@
 package view;
 
+import javafx.beans.binding.Bindings;
 import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.util.converter.NumberStringConverter;
 import modele.GameManager;
 import modele.pieces.Baton;
 import modele.pieces.Carre;
@@ -31,9 +34,14 @@ public class ControllerPartie {
     @FXML
     private BorderPane prochainePiece;
 
+    @FXML
+    private Label scoreJoueur;
+
 
     @FXML
     public void initialize() {
+
+        Bindings.bindBidirectional(scoreJoueur.textProperty(),gmanager.getJeu().scoreProperty(), new NumberStringConverter()); // binding du score
 
         for (Piece piece : gmanager.getJeu().getListePieceEnJeu()) {
             updateEcran(piece);
@@ -52,6 +60,11 @@ public class ControllerPartie {
                 change.next();
                 for(Morceau m: change.getRemoved()){
                     updateEcran(m);
+                    for(Morceau m2 : gmanager.getJeu().getListeMorceauEnJeu()){
+                        if (m2.getX() == m.getX() && m2.getY()<m.getY()){
+                            m2.setY(m2.getY()+30);
+                        }
+                    }
                 }
             }
         );

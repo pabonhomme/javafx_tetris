@@ -12,32 +12,17 @@ import java.util.ArrayList;
 
 public class Partie {
     private SimpleIntegerProperty score;
-    private Joueur joueurEnCours;
+
     private Piece pieceCourante;
     private Piece pieceSuivante;
     private Boolean estFini;
     private ObservableList<Piece> listePieceEnJeu = FXCollections.observableArrayList();
     private ObservableList<Morceau> listeMorceauEnJeu = FXCollections.observableArrayList();
 
-    public SimpleIntegerProperty getScore() {
+    public SimpleIntegerProperty scoreProperty() { return score; }
+    public int getScore() { return this.score.get(); }
+    public void setScore(int x) { this.score.set(x); }
 
-        return score;
-    }
-
-    public void setScore(SimpleIntegerProperty score) {
-
-        this.score = score;
-    }
-
-    public Joueur getJoueurEnCours() {
-
-        return joueurEnCours;
-    }
-
-    public void setJoueurEnCours(Joueur joueurEnCours) {
-
-        this.joueurEnCours = joueurEnCours;
-    }
 
     public Piece getPieceCourante() {
 
@@ -62,11 +47,7 @@ public class Partie {
     public Partie(){
         this.score=new SimpleIntegerProperty(0);
         this.estFini = false;
-        joueurEnCours = new Joueur();
-    }
-    public void setPseudoJoueur(String pseudo){
 
-        this.joueurEnCours.setPseudo(pseudo);
     }
 
     public ObservableList<Piece> getListePieceEnJeu() {
@@ -102,9 +83,9 @@ public class Partie {
         this.pieceSuivante = pieceSuivante;
     }
 
-    public ArrayList<Integer>  peutSupprimer(){ //retourner les lignes remplie de morceaux à supprimer
+    public int  peutSupprimer(){ //retourner les lignes remplie de morceaux à supprimer
         ArrayList<Integer> ligne= new ArrayList<>(20);
-        ArrayList<Integer> ret= new ArrayList<>();
+        //ArrayList<Integer> ret= new ArrayList<>();
         for (int i=0; i<20;i++){
             ligne.add(0);
         }
@@ -113,16 +94,87 @@ public class Partie {
                 ligne.set(0,ligne.get(0)+1);
             else if (m.getY()==540)
                 ligne.set(1,ligne.get(1)+1);
+            else if (m.getY()==510)
+                ligne.set(2,ligne.get(2)+1);
+            else if (m.getY()==480)
+                ligne.set(3,ligne.get(3)+1);
+            else if (m.getY()==450)
+                ligne.set(4,ligne.get(4)+1);
+            else if (m.getY()==420)
+                ligne.set(5,ligne.get(5)+1);
+            else if (m.getY()==390)
+                ligne.set(6,ligne.get(6)+1);
+            else if (m.getY()==360)
+                ligne.set(7,ligne.get(7)+1);
+            else if (m.getY()==330)
+                ligne.set(8,ligne.get(8)+1);
+            else if (m.getY()==300)
+                ligne.set(9,ligne.get(9)+1);
+            else if (m.getY()==270)
+                ligne.set(10,ligne.get(10)+1);
+            else if (m.getY()==240)
+                ligne.set(11,ligne.get(11)+1);
+            else if (m.getY()==210)
+                ligne.set(12,ligne.get(12)+1);
+            else if (m.getY()==180)
+                ligne.set(13,ligne.get(13)+1);
+            else if (m.getY()==150)
+                ligne.set(14,ligne.get(14)+1);
+            else if (m.getY()==120)
+                ligne.set(15,ligne.get(15)+1);
+            else if (m.getY()==90)
+                ligne.set(16,ligne.get(16)+1);
+            else if (m.getY()==60)
+                ligne.set(17,ligne.get(17)+1);
+            else if (m.getY()==30)
+                ligne.set(18,ligne.get(18)+1);
+            else
+                ligne.set(19,ligne.get(19)+1);
         }
         for (int i=0; i<20;i++){
-            if (ligne.get(i)==10)
-                switch(i){
-                    case 0:
-                        ret.add(570);
-                    case 1:
-                        ret.add(540);
-                }
+            if (ligne.get(i)==10){
+                if (i==19)
+                    return 0;
+                else if (i==18)
+                    return 30;
+                else if (i==17)
+                    return 60;
+                else if (i==16)
+                    return 90;
+                else if (i==15)
+                    return 120;
+                else if (i==14)
+                    return 150;
+                else if (i==13)
+                    return 180;
+                else if (i==12)
+                    return 210;
+                else if (i==11)
+                    return 240;
+                else if (i==10)
+                    return 270;
+                else if (i==9)
+                    return 300;
+                else if (i==8)
+                    return 330;
+                else if (i==7)
+                    return 360;
+                else if (i==6)
+                    return 390;
+                else if (i==5)
+                    return 420;
+                else if (i==4)
+                    return 450;
+                else if (i==3)
+                    return 480;
+                else if (i==2)
+                    return 510;
+                else if (i==1)
+                    return 540;
+                else if (i==0)
+                    return 570;
+            }
         }
-        return ret;
+        return -1;
     }
 }

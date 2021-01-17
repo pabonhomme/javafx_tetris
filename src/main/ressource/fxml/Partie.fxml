@@ -11,6 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.HBox?>
 <GridPane fx:id="partie" gridLinesVisible="true" xmlns="http://javafx.com/javafx/11.0.1"
           xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ControllerPartie">
     <columnConstraints>
@@ -47,7 +48,10 @@
             </BorderPane>
             <BorderPane fx:id="score" GridPane.rowIndex="2" style="-fx-border-style: solid; -fx-border-color: black;">
                 <top>
-                    <Label text="Score :" BorderPane.alignment="CENTER" style="-fx-font-size: 15pt;"/>
+                    <HBox alignment="CENTER">
+                        <Label text="Score :" BorderPane.alignment="CENTER" style="-fx-font-size: 15pt;"/>
+                        <Label fx:id="scoreJoueur" style="-fx-font-size: 15pt;" BorderPane.alignment="BOTTOM_CENTER"/>
+                    </HBox>
                 </top>
                 <center>
                     <GridPane alignment="CENTER">

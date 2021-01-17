@@ -5,14 +5,12 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.input.KeyEvent;
-import javafx.util.StringConverter;
-import javafx.util.converter.IntegerStringConverter;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
 import javafx.util.converter.NumberStringConverter;
 import modele.GameManager;
+import modele.Joueur;
 
 import java.io.IOException;
 
@@ -24,12 +22,34 @@ public class ControllerFinPartie {
     private Label pseudoAafficher;
     @FXML
     private Label scoreFinal;
+    @FXML
+    private ListView<modele.Joueur> top10Joueurs;
 
 
     @FXML
     public void initialize(){
-        pseudoAafficher.setText("Bien joué lolipop");
-        Bindings.bindBidirectional(scoreFinal.textProperty(),gmanager.getJeu().getScore(), new NumberStringConverter());
+        gmanager.ajouterJoueurTop10();
+        pseudoAafficher.setText("Bien joué " + gmanager.getJoueurEnCours().getPseudo()); // on bind le pseudo du joueur
+        Bindings.bindBidirectional(scoreFinal.textProperty(),gmanager.getJeu().scoreProperty(), new NumberStringConverter()); // on bind le score du joueur
+
+        top10Joueurs.itemsProperty().bind(gmanager.top10JoueursProperty()); // binding de la liste des utilisateurs et de leurs score dans la listView
+
+        top10Joueurs.setCellFactory((param ->
+                new ListCell<Joueur>() {
+                    @Override
+                    protected void updateItem(Joueur j, boolean empty) {
+                        super.updateItem(j, empty);
+                        if(!empty){
+                            String value = j.getPseudo() + "\n" + "Score : " + j.getScore(); // si la cellule n'est pas vide on remplit avec le texte associé
+                            setText(value);
+                        }
+                        else{
+                            textProperty().unbind();
+                            setText("");
+                        }
+                    }
+                }
+        ));
     }
 
     @FXML
@@ -45,10 +65,8 @@ public class ControllerFinPartie {
     private void clickMenu() throws IOException {
         try {
             gmanager.getJoueurEnCours().setPseudo(""); // si on va sur le menu alors pseudo réinitialisé
-            Parent root = FXMLLoader.load(getClass().getResource("/fxml/Menu.fxml"));
-            Scene scene = new Scene(root);
-            gmanager.getPrimaryStage().setScene(scene);
-            gmanager.getPrimaryStage().show();
+            gmanager.chargerFenetre(FXMLLoader.load(getClass().getResource("/fxml/Menu.fxml")));
+
         } catch (IOException e) {
             System.out.println(e);
         }

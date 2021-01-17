@@ -24,6 +24,9 @@ public class Launch extends Application {
             primaryStage.setScene(scene);
             primaryStage.setResizable(false);
             primaryStage.show();
+            primaryStage.setOnCloseRequest((__)->{
+                GameManager.getInstance().sauvegarderDonnees();
+            });
         }
         catch (IOException e){
             System.out.println(e);
@@ -33,6 +36,6 @@ public class Launch extends Application {
     @Override
     public void stop() throws Exception {
         GameManager.getInstance().stopBoucleur();
-        super.stop();
+//        GameManager.getInstance().sauvegarderDonnees();
     }
 }

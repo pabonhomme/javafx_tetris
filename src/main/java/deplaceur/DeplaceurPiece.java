@@ -12,12 +12,6 @@ public class DeplaceurPiece extends Deplaceur{
 
     @Override
     public void deplacerBas(Piece p) {
-        /*if(leCollisionneur.peutBouger(p.getListeMorceaux().get(0).getX(),p.getListeMorceaux().get(0).getY())){
-            for (Morceau morceau:p.getListeMorceaux()) {
-                morceau.setY(morceau.getY() + 15); // de 15 en 15 pour pas aller trop vite car height morceau = 30
-//                System.out.println(morceau.getY());
-            }
-        }*/
         if(leCollisionneur.peutBougerEnBas()){
             for (Morceau morceau:p.getListeMorceaux()) {
                 morceau.setY(morceau.getY() + 7.5); // de 15 en 15 pour pas aller trop vite car height morceau = 30
