@@ -6,17 +6,18 @@ import modele.pieces.Morceau;
 import modele.pieces.Piece;
 
 /**
- * Classe qui représente la vue d'un carré
+ * Classe qui représente la vue d'un Te
  */
-public class CarreV extends Parent {
+public class TeV extends Parent {
 
     /**
-     * crée un morceauV et l'ajouter au CarreV
-     * @param x abscisse
-     * @param y ordonnée
+     * crée un morceauV et l'ajouter au TeV
+     *
+     * @param x     abscisse
+     * @param y     ordonnée
      * @param color couleur
      */
-    private void creerMorceau(double x, double y, Color color){
+    private void creerMorceau(double x, double y, Color color) {
         MorceauV morceauV = new MorceauV(color);
         morceauV.setLayoutX(x);
         morceauV.setLayoutY(y);
@@ -24,19 +25,21 @@ public class CarreV extends Parent {
     }
 
     /**
-     * ajoute un morceauV au CarreV
+     * ajoute un morceauV au TeV
+     *
      * @param m
      */
-    public void addMorceauV(MorceauV m){
+    public void addMorceauV(MorceauV m) {
         this.getChildren().add(m);
     }
 
 
     /**
      * constructeur
+     *
      * @param piece Piece
      */
-    public CarreV(Piece piece){
+    public TeV(Piece piece) {
         for (Morceau morceau : piece.getListeMorceaux()) {
             MorceauV morceauV = new MorceauV(piece.getCouleur());
             morceauV.layoutXProperty().bind(morceau.xProperty()); // binding des x du modele du morceau
@@ -47,24 +50,25 @@ public class CarreV extends Parent {
 
     /**
      * constructeur
-     * @param x abscisse
-     * @param y ordonnée
+     *
+     * @param x     abscisse
+     * @param y     ordonnée
      * @param piece Piece
      */
-    public CarreV(double x, double y, Piece piece){
-        for(int i =0; i<4; i++){
-            switch (i){
+    public TeV(double x, double y, Piece piece) {
+        for (int i = 0; i < 4; i++) {
+            switch (i) {
                 case 0:
                     this.creerMorceau(x, y, piece.getCouleur());
                     break;
                 case 1:
-                    this.creerMorceau(x, y+30, piece.getCouleur());
+                    this.creerMorceau(x+ 42, y, piece.getCouleur());
                     break;
                 case 2:
-                    this.creerMorceau(x+42, y, piece.getCouleur());
+                    this.creerMorceau(x + 84, y, piece.getCouleur());
                     break;
                 case 3:
-                    this.creerMorceau(x+42, y+30, piece.getCouleur());
+                    this.creerMorceau(x + 42, y + 30, piece.getCouleur());
                     break;
             }
         }

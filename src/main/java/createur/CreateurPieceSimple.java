@@ -5,6 +5,7 @@ import modele.Partie;
 import modele.pieces.Baton;
 import modele.pieces.Carre;
 import modele.pieces.Piece;
+import modele.pieces.Te;
 
 /**
  * classe instanciable qui permet de créer des pièces
@@ -17,7 +18,7 @@ public class CreateurPieceSimple extends CreateurPiece {
      */
     @Override
     public Piece choixPiece() {
-        int i = alea.nextInt(6);
+        int i = alea.nextInt(7);
         switch (i) {
             case 0:
                 Piece carre1 = new Carre(0, 0, Color.YELLOW);
@@ -26,13 +27,13 @@ public class CreateurPieceSimple extends CreateurPiece {
                 Piece carre2 = new Carre(42, 0, Color.BLUE);
                 return carre2;
             case 2:
-                Piece carre3 = new Carre(84, 0, Color.RED);
+                Piece carre3 = new Te(84, 0, Color.RED);
                 return carre3;
             case 3:
-                Piece carre4 = new Carre(126, 0, Color.GREEN);
+                Piece carre4 = new Te(126, 0, Color.GREEN);
                 return carre4;
             case 4:
-                Piece baton1 = new Baton(168, 0, Color.WHITESMOKE);
+                Piece baton1 = new Baton(168, 0, Color.GRAY);
                 return baton1;
             case 5:
                 Piece baton2 = new Baton(210, 0, Color.CYAN);
@@ -43,8 +44,6 @@ public class CreateurPieceSimple extends CreateurPiece {
         }
         return null;
     }
-
-    //
 
     /**
      * création de la pièce courante et de la pièce suivante

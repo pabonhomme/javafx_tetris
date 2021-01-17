@@ -31,15 +31,15 @@ public class Te extends Piece{
         listeMorceaux.get(i).setY(y);
 
         // deuxième morceau haut gauche
-        listeMorceaux.get(i+1).setX(x+1);
+        listeMorceaux.get(i+1).setX(x+42);
         listeMorceaux.get(i+1).setY(y);
 
         // troisème morceau bas droite
-        listeMorceaux.get(i+2).setX(x+2);
+        listeMorceaux.get(i+2).setX(x+84);
         listeMorceaux.get(i+2).setY(y);
 
         // quatrième morceau haut droite
-        listeMorceaux.get(i+3).setX(x+1);
-        listeMorceaux.get(i+3).setY(y+1);
+        listeMorceaux.get(i+3).setX(x+42);
+        listeMorceaux.get(i+3).setY(y+30);
     }
 }

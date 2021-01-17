@@ -9,13 +9,11 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.util.converter.NumberStringConverter;
 import modele.GameManager;
-import modele.pieces.Baton;
-import modele.pieces.Carre;
-import modele.pieces.Morceau;
-import modele.pieces.Piece;
+import modele.pieces.*;
 import view.ObjetV.BatonV;
 import view.ObjetV.CarreV;
 import view.ObjetV.MorceauV;
+import view.ObjetV.TeV;
 
 public class ControllerPartie {
 
@@ -92,8 +90,12 @@ public class ControllerPartie {
             prochainePiece.getChildren().add(carreVSuivante); // ajout du carreV au BorderPane
         }
         if (piece instanceof Baton) {
-            BatonV batonVSuivante = new BatonV(60, 150, piece);
+            BatonV batonVSuivante = new BatonV(70, 140, piece);
             prochainePiece.getChildren().add(batonVSuivante); // ajout du carreV au BorderPane
+        }
+        if (piece instanceof Te) {
+            TeV teVSuivante = new TeV(40, 90, piece);
+            prochainePiece.getChildren().add(teVSuivante); // ajout du carreV au BorderPane
         }
     }
 }
