@@ -5,6 +5,7 @@ Auteurs :
 -Erwan SOULIER
 
 Organisation :
+
 -docs : Dossier contenant les diagrammes de classes et de cas d'utilisations ainsi que le contexte.
 -src : Dossier contenant le code source du programme
 -JavaDoc : Dossier contenant la javadoc générée depuis intellij
