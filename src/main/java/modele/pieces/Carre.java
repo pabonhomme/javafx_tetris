@@ -2,14 +2,29 @@ package modele.pieces;
 
 import javafx.scene.paint.Color;
 
-// Elle est constituée de quatre carrés formant un méta-carré de 2x2
+/**
+ * Classe Carre constituée de quatre carrés formant un méta-carré de 2x2
+ */
 public class Carre extends Piece{
+
+    /**
+     * constructeur
+     * @param x valeur abscisse
+     * @param y valeur ordonnée
+     * @param couleur couleur de la pièce
+     */
     public Carre(int x, int y, Color couleur) {
         super(couleur);
-        this.creationMorceaux(x, y);
+        this.setPositionsMorceaux(x, y);
     }
 
-    public void creationMorceaux(int x, int y){
+    /**
+     * Donne des coordonnées à chaque morceaux
+     * @param x valeur abscisse
+     * @param y valeur ordonnée
+     */
+    @Override
+    public void setPositionsMorceaux(int x, int y){
         int i = 0;
         // premier morceau haut gauche
         listeMorceaux.get(i).setX(x);

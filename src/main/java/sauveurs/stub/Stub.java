@@ -1,13 +1,12 @@
 package sauveurs.stub;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+
 import modele.Joueur;
 import sauveurs.Sauveur;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
+
 
 /**
  * Simule la serialization d'une collection de joueur

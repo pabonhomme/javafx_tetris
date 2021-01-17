@@ -143,6 +143,7 @@ public class GameManager implements InvalidationListener {
      * Méthode qui met à jour le top 10 en fonction du résultat d'un joueur
      */
     public void ajouterJoueurTop10(){
+        Boolean ajouter = false;
         joueurEnCours.setScore(jeu.getScore()); // on donne le score final au joueur en cours
         for (Joueur joueur : top10Joueurs) { // pour chaque joueur de la liste
             if(joueur.equals(joueurEnCours)){ // si égaux
@@ -152,10 +153,13 @@ public class GameManager implements InvalidationListener {
                 }
             }
             if(joueur.getScore() < joueurEnCours.getScore()){ // si le joueur en cours a fait mieux qu'un du top 10
-                joueur.setPseudo(joueurEnCours.getPseudo()); // on change le pseudo
-                joueur.setScore(joueurEnCours.getScore()); // on change le score
+                ajouter = true;
                 break;
             }
+        }
+        if(ajouter){
+            getTop10Joueurs().add(joueurEnCours);
+            getTop10Joueurs().remove(getTop10Joueurs().size() -2);
         }
         FXCollections.sort(top10Joueurs);
     }
@@ -202,6 +206,7 @@ public class GameManager implements InvalidationListener {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/fxml/Partie.fxml"));
             Scene scene = new Scene(root);
+            scene.getStylesheets().add(getClass().getResource("/css/tetris.css").toExternalForm());
             scene.addEventFilter(KeyEvent.KEY_PRESSED, this::touchesClavier);
             primaryStage.setScene(scene);
             primaryStage.show();
@@ -214,8 +219,9 @@ public class GameManager implements InvalidationListener {
      * Permet de changer de scene
      * @param root scène à inserer dans la fenêtre
      */
-    public void chargerFenetre(Parent root){
+    public void chargerFenetre(Parent root, String style){
         Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource(style).toExternalForm());
         primaryStage.setScene(scene);
         primaryStage.show();
     }
@@ -270,17 +276,7 @@ public class GameManager implements InvalidationListener {
                 }
                 break;
             case UP:
-                if (!leBoucleur.getEstEnpause()) {
-                    for (Piece p : jeu.getListePieceEnJeu()) { // à supprimeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeer
-                        if (jeu.getPieceCourante() == p) {
-                            for (Morceau morceau : p.getListeMorceaux()) {
-                                morceau.setY(morceau.getY() - 15);
-                                System.out.println(morceau.getY());
-                            }
-                        }
-                    }
-                }
-//                    leDeplaceur.faireTournerPiece();
+                    leDeplaceur.faireTournerPiece(jeu.getPieceCourante());
                 break;
             case SPACE:
                 if (leBoucleur.getEstEnpause()) {
@@ -291,7 +287,7 @@ public class GameManager implements InvalidationListener {
                 try {
                     this.leBoucleur.setRunning(false);
                     this.leBoucleur.removeListener(this);
-                    chargerFenetre(FXMLLoader.load(getClass().getResource("/fxml/Menu.fxml")));
+                    chargerFenetre(FXMLLoader.load(getClass().getResource("/fxml/Menu.fxml")), "/css/tetris.css");
 
                 } catch (IOException e) {
                     System.out.println(e);
@@ -319,7 +315,7 @@ public class GameManager implements InvalidationListener {
             for (Morceau m : jeu.getPieceCourante().getListeMorceaux()) {
                 jeu.ajouterMorceau(m); // ajout des morceaux de la pièce courante avant création pièce car sinon ils se comparent à eux-même dans collisionneur
             }
-            int l=jeu.peutSupprimer(); //récupère les lignes à vider
+            int l=jeu.peutSupprimer(); //récupère la ligne à vider
             while(l!=-1){
                 //On fait une copie de la liste de morceaux en jeu
                 ArrayList<Morceau> tmp = new ArrayList<>(jeu.getListeMorceauEnJeu());
@@ -329,13 +325,18 @@ public class GameManager implements InvalidationListener {
                         this.incrementerScore();
                     }
                 }
-                l=jeu.peutSupprimer(); //ON enlève la ligne vidée de la liste de ligne à vider
+                for(Morceau m2 : jeu.getListeMorceauEnJeu()){
+                    if (m2.getY()<l){
+                        m2.setY(m2.getY()+30);//On descend tout les morceaux au dessus de la ligne supprimée
+                    }
+                }
+                l=jeu.peutSupprimer(); //On regarde s'il reste d'autres lignes à supprimer
             }
             if (leCollisionneur.toucheHautEcran()) { // si une pièce est tout en heut quand on veut créer une nouvelle
                 try {
                     this.leBoucleur.setRunning(false); // on arrête le boucleur
                     this.leBoucleur.removeListener(this); // on supprime notre classe de la liste des observé de notre boucleur
-                    this.chargerFenetre(FXMLLoader.load(getClass().getResource("/fxml/FinPartie.fxml"))); // on change de fenêtre
+                    this.chargerFenetre(FXMLLoader.load(getClass().getResource("/fxml/FinPartie.fxml")), "/css/tetris.css"); // on change de fenêtre
 
                 } catch (IOException e) {
                     System.out.println(e);

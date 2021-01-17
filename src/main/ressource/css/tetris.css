@@ -1,0 +1,24 @@
+.label{
+    -fx-font-size: 15pt;
+}
+
+.list-view{
+}
+
+/* dans partie.fxml */
+#bordureEcran{
+    -fx-border-style: solid;
+    -fx-border-color: black;
+}
+
+#bordureProchainePiece{
+    -fx-border-style: solid;
+    -fx-border-color: black;
+}
+
+#scoreEtTouches{
+    -fx-border-style: solid;
+    -fx-border-color: black;
+}
+
+

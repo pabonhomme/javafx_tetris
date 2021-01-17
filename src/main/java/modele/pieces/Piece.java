@@ -3,31 +3,60 @@ package modele.pieces;
 import javafx.scene.paint.Color;
 import java.util.ArrayList;
 
+/**
+ * Classe abstraite qui représente une pièce
+ */
 public abstract class Piece {
 
+    /**
+     * couleur de la pièce
+     */
     private Color couleur;
+
+    /**
+     * liste de morceaux de la liste
+     */
     protected ArrayList<Morceau> listeMorceaux;
 
+    /**
+     * récupère la couleur de la pièce
+     * @return Color
+     */
     public Color getCouleur() {
         return couleur;
     }
 
+    /**
+     * set la couleur de la pièce
+     * @param couleur Color
+     */
     public void setCouleur(Color couleur) {
 
         this.couleur = couleur;
     }
 
+    /**
+     * récupère la liste de morceaux de la pièces
+     * @return la liste de morceaux
+     */
     public ArrayList<Morceau> getListeMorceaux() {
 
         return listeMorceaux;
     }
 
+    /**
+     * set la liste de morceaux de la liste
+     * @param listeMorceaux reçoit une liste de Morceaux
+     */
     public void setListeMorceaux(ArrayList<Morceau> listeMorceaux) {
 
         this.listeMorceaux = listeMorceaux;
     }
 
-    // constructeur
+    /**
+     * constructeur Piece
+     * @param couleur Color de la pièce
+     */
     public Piece(Color couleur){
         this.couleur = couleur;
         this.listeMorceaux = new ArrayList<Morceau>();
@@ -35,6 +64,13 @@ public abstract class Piece {
             this.listeMorceaux.add(new Morceau(couleur));
         }
     }
+
+    /**
+     * Donne des coordonnées à chaque morceaux, créé en vertical
+     * @param x valeur abscisse
+     * @param y valeur ordonnée
+     */
+    public abstract void setPositionsMorceaux(int x, int y);
 
     @Override
     public boolean equals(Object v) { //méthode equals qui compare entre deux objets, et ensuite entre deux instances d'Utilisateurs.

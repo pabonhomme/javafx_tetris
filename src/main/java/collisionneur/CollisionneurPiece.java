@@ -1,10 +1,11 @@
 package collisionneur;
 
-import modele.Partie;
 import modele.pieces.Morceau;
-import modele.pieces.Piece;
-import view.ObjetV.CarreV;
 
+/**
+ * classe fille de Collisionneur
+ * Permet de savoir si des pièces peuvent bouger dans notre écran
+ */
 public class CollisionneurPiece extends Collisionneur {
 
     @Override
@@ -23,7 +24,6 @@ public class CollisionneurPiece extends Collisionneur {
     public boolean peutBougerEnBas() {
         boolean ind = true;
         for (Morceau m : jeu.getPieceCourante().getListeMorceaux()) {
-            System.out.println(m.getX());
             if (m.getY() >= height - 30 || m.getY() < 0) {
                 return false;
             }

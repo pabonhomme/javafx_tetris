@@ -19,7 +19,7 @@ public class ControllerMenu {
     @FXML
     private void clickJouer() {
         try {
-            gmanager.chargerFenetre(FXMLLoader.load(getClass().getResource("/fxml/Pseudo.fxml")));
+            gmanager.chargerFenetre(FXMLLoader.load(getClass().getResource("/fxml/Pseudo.fxml")), "/css/tetris.css");
 
         } catch (IOException e) {
             System.out.println(e);

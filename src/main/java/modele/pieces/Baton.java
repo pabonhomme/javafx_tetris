@@ -2,15 +2,30 @@ package modele.pieces;
 
 import javafx.scene.paint.Color;
 
-// Elle est constituée de quatre carrés formant une ligne
+/**
+ * Classe baton constituée de quatre carrés formant une ligne
+ */
 public class Baton extends Piece{
+    /**
+     * constructeur
+     * @param x valeur abscisse
+     * @param y valeur ordonnée
+     * @param couleur couleur de la pièce
+     */
     public Baton(int x, int y, Color couleur) {
         super(couleur);
-        this.creationMorceaux(x, y);
+        this.setPositionsMorceaux(x, y);
     }
 
-    // créé en vertical
-    public void creationMorceaux(int x, int y){
+
+
+    /**
+     * Donne des coordonnées à chaque morceaux, créé en vertical
+     * @param x valeur abscisse
+     * @param y valeur ordonnée
+     */
+    @Override
+    public void setPositionsMorceaux(int x, int y){
         int i = 0;
         // premier morceau haut
         listeMorceaux.get(i).setX(x);

@@ -2,14 +2,22 @@ package modele.pieces;
 
 import javafx.scene.paint.Color;
 
-// Elle est constituée de quatre carrés formant un méta-carré de 2x2, dont la rangée supérieure est glissée d'un pas vers la gauche
+/**
+ * Classe Biais constituée de quatre carrés formant un méta-carré de 2x2, dont la rangée supérieure est glissée d'un pas vers la gauche
+ */
 public class Biais extends Piece{
     public Biais(int x, int y, Color couleur) {
         super(couleur);
-        this.creationMorceaux(x, y);
+        this.setPositionsMorceaux(x, y);
     }
 
-    public void creationMorceaux(int x, int y){
+    /**
+     * Donne des coordonnées à chaque morceaux
+     * @param x valeur abscisse
+     * @param y valeur ordonnée
+     */
+    @Override
+    public void setPositionsMorceaux(int x, int y){
         int i = 0;
         // premier morceau bas gauche
         listeMorceaux.get(i).setX(x);

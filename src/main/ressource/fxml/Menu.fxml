@@ -28,7 +28,7 @@
         <Image url="/img/tetris.jpg" requestedHeight="650" requestedWidth="650"/>
     </ImageView>
     <VBox GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.halignment="CENTER" GridPane.rowSpan="6">
-        <Label wrapText="true" text="Meilleurs joueurs : " style="-fx-font-size: 15pt;"/>
+        <Label wrapText="true" text="Meilleurs joueurs : "/>
         <ListView fx:id="top10Joueurs" editable="false"/>
     </VBox>
 

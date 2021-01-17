@@ -1,88 +1,179 @@
 package modele;
 
-import javafx.beans.Observable;
+
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import modele.pieces.Morceau;
 import modele.pieces.Piece;
-import view.ObjetV.CarreV;
 
 import java.util.ArrayList;
 
+/**
+ * Classe partie qui contient les données de la partie en cours
+ */
 public class Partie {
+
+    /**
+     * propriété qui contient le score
+     */
     private SimpleIntegerProperty score;
 
+    /**
+     * pièce en cours
+     */
     private Piece pieceCourante;
+
+    /**
+     * pièce suivante
+     */
     private Piece pieceSuivante;
+
+    /**
+     * Valeur Boolean, true si partie terminée
+     */
     private Boolean estFini;
+
+    /**
+     * liste observable des pièces en jeu pour l'affichage
+     */
     private ObservableList<Piece> listePieceEnJeu = FXCollections.observableArrayList();
+
+    /**
+     * liste observable des morceaux en jeu pour les collisions
+     */
     private ObservableList<Morceau> listeMorceauEnJeu = FXCollections.observableArrayList();
 
+    /**
+     * retourne la propriété score
+     * @return SimpleIntegerProperty
+     */
     public SimpleIntegerProperty scoreProperty() { return score; }
+
+    /**
+     * retourne la valeur du score
+     * @return int
+     */
     public int getScore() { return this.score.get(); }
+
+    /**
+     * set le score en cours
+     * @param x int
+     */
     public void setScore(int x) { this.score.set(x); }
 
-
+    /**
+     * récupère la pièce courante
+     * @return Piece
+     */
     public Piece getPieceCourante() {
 
         return pieceCourante;
     }
 
+    /**
+     * set la pièce courante
+     * @param pieceCourante Piece
+     */
     public void setPieceCourante(Piece pieceCourante) {
 
         this.pieceCourante = pieceCourante;
     }
 
+    /**
+     * renvoie le statut de la partie
+     * @return Boolean
+     */
     public Boolean getEstFini() {
 
         return estFini;
     }
 
+    /**
+     * set le statut de la partie
+     * @param estFini Boolean
+     */
     public void setEstFini(Boolean estFini) {
 
         this.estFini = estFini;
     }
 
+    /**
+     * constructeur de partie
+     */
     public Partie(){
         this.score=new SimpleIntegerProperty(0);
         this.estFini = false;
 
     }
 
+    /**
+     * récupère la liste des pièces en jeu
+     * @return ObservableList
+     */
     public ObservableList<Piece> getListePieceEnJeu() {
 
         return listePieceEnJeu;
     }
 
+    /**
+     * ajoute une pièce à la liste du serveur
+     * @param p Pièce
+     */
     public void ajouterPiece(Piece p){
 
         listePieceEnJeu.add(p);
     }
-  public ObservableList<Morceau> getListeMorceauEnJeu() {
+
+    /**
+     * récupère la liste des morceaux en jeu
+     * @return ObservableList<Morceau>
+     */
+    public ObservableList<Morceau> getListeMorceauEnJeu() {
 
         return listeMorceauEnJeu;
     }
 
+    /**
+     * ajoute un morceau à la liste de morceau
+     * @param m Morceau
+     */
     public void ajouterMorceau(Morceau m){
 
         listeMorceauEnJeu.add(m);
     }
+
+    /**
+     * suppression d'un morceau
+     * @param m Morceau
+     */
     public void suppMorceau(Morceau m){
 
         listeMorceauEnJeu.remove(m);
     }
 
+    /**
+     * récupère la pièce suivante
+     * @return Piece
+     */
     public Piece getPieceSuivante() {
 
         return pieceSuivante;
     }
 
+    /**
+     * set la pièce suivante
+     * @param pieceSuivante Piece
+     */
     public void setPieceSuivante(Piece pieceSuivante) {
 
         this.pieceSuivante = pieceSuivante;
     }
 
+    /**
+     * Permet de vérifier si on peut supprimer une ligne dans la vue et donc supprimer des morceaux
+     * @return int, numéro de ligne à supprimer
+     */
     public int  peutSupprimer(){ //retourner les lignes remplie de morceaux à supprimer
         ArrayList<Integer> ligne= new ArrayList<>(20);
         //ArrayList<Integer> ret= new ArrayList<>();

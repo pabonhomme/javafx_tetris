@@ -7,8 +7,17 @@ import javafx.scene.paint.Color;
 import modele.pieces.Morceau;
 import modele.pieces.Piece;
 
+/**
+ * Classe qui représente la vue d'un baton
+ */
 public class BatonV extends Parent{
 
+    /**
+     * crée un morceauV et l'ajouter au batonV
+     * @param x abscisse
+     * @param y ordonnée
+     * @param color couleur
+     */
     private void creerMorceau(double x, double y, Color color){
         MorceauV morceauV = new MorceauV(color);
         morceauV.setLayoutX(x);
@@ -16,10 +25,18 @@ public class BatonV extends Parent{
         this.addMorceauV(morceauV); // ajout du morceauV au carreV
     }
 
+    /**
+     * ajoute un morceauV au batonV
+     * @param m
+     */
     public void addMorceauV(MorceauV m){
         this.getChildren().add(m);
     }
 
+    /**
+     * constructeur
+     * @param piece Piece
+     */
     public BatonV(Piece piece){
         for (Morceau morceau : piece.getListeMorceaux()) {
             MorceauV morceauV = new MorceauV(piece.getCouleur());
@@ -29,6 +46,12 @@ public class BatonV extends Parent{
         }
     }
 
+    /**
+     * constructeur
+     * @param x abscisse
+     * @param y ordonnée
+     * @param piece Piece
+     */
     public BatonV(double x, double y, Piece piece){
         for(int i =0; i<4; i++){
             switch (i){

@@ -1,8 +1,6 @@
 package view;
 
 import javafx.beans.binding.Bindings;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -65,7 +63,7 @@ public class ControllerFinPartie {
     private void clickMenu() throws IOException {
         try {
             gmanager.getJoueurEnCours().setPseudo(""); // si on va sur le menu alors pseudo réinitialisé
-            gmanager.chargerFenetre(FXMLLoader.load(getClass().getResource("/fxml/Menu.fxml")));
+            gmanager.chargerFenetre(FXMLLoader.load(getClass().getResource("/fxml/Menu.fxml")), "/css/tetris.css");
 
         } catch (IOException e) {
             System.out.println(e);

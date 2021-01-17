@@ -1,18 +1,13 @@
 package sauveurs.ser;
 
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import modele.Joueur;
-import modele.Option;
 import sauveurs.Sauveur;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
+
 
 
 /**
@@ -40,6 +35,10 @@ public class SauveurSer extends Sauveur {
     }
 
 
+    /**
+     * sérialise la liste de joueur
+     * @param top10Joueur Collection<Joueur>
+     */
     private void serialiser(Collection<Joueur> top10Joueur) {
         try {
             FileOutputStream fout = new FileOutputStream("donnees.bin");
@@ -53,6 +52,10 @@ public class SauveurSer extends Sauveur {
     }
 
 
+    /**
+     * désérialise la liste de joueur
+     * @return Collection<Joueur>
+     */
     private Collection<Joueur> deserialiser() {
         Collection<Joueur> listeJoueurs = new ArrayList<Joueur>();
         try {

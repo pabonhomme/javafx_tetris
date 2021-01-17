@@ -6,6 +6,9 @@ import modele.pieces.Baton;
 import modele.pieces.Carre;
 import modele.pieces.Piece;
 
+/**
+ * classe instanciable qui permet de créer des pièces
+ */
 public class CreateurPieceSimple extends CreateurPiece {
 
     /**
@@ -44,7 +47,6 @@ public class CreateurPieceSimple extends CreateurPiece {
     //
 
     /**
-     * ajout d'une piece aléatoirement dans la liste de piece en jeu
      * création de la pièce courante et de la pièce suivante
      * @param jeu partie en cours
      */

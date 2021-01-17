@@ -7,7 +7,6 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
 import javafx.util.converter.NumberStringConverter;
 import modele.GameManager;
 import modele.pieces.Baton;
@@ -22,9 +21,6 @@ public class ControllerPartie {
 
     GameManager gmanager = GameManager.getInstance();
 
-    // gridPane de la vue
-    @FXML
-    private Pane partie;
 
     // groupe qui contient le quadrillage
     @FXML
@@ -41,7 +37,7 @@ public class ControllerPartie {
     @FXML
     public void initialize() {
 
-        Bindings.bindBidirectional(scoreJoueur.textProperty(),gmanager.getJeu().scoreProperty(), new NumberStringConverter()); // binding du score
+        Bindings.bindBidirectional(scoreJoueur.textProperty(), gmanager.getJeu().scoreProperty(), new NumberStringConverter()); // binding du score
 
         for (Piece piece : gmanager.getJeu().getListePieceEnJeu()) {
             updateEcran(piece);
@@ -50,23 +46,18 @@ public class ControllerPartie {
 
         gmanager.getJeu().getListePieceEnJeu().addListener((ListChangeListener.Change<? extends Piece> change) -> {
                     change.next();
-                    for(Piece piece: change.getAddedSubList()){
+                    for (Piece piece : change.getAddedSubList()) {
                         UpdatePieceSuivante(gmanager.getJeu().getPieceSuivante());
                         updateEcran(piece);
                     }
                 }
         );
         gmanager.getJeu().getListeMorceauEnJeu().addListener((ListChangeListener.Change<? extends Morceau> change) -> {
-                change.next();
-                for(Morceau m: change.getRemoved()){
-                    updateEcran(m);
-                    for(Morceau m2 : gmanager.getJeu().getListeMorceauEnJeu()){
-                        if (m2.getX() == m.getX() && m2.getY()<m.getY()){
-                            m2.setY(m2.getY()+30);
-                        }
+                    change.next();
+                    for (Morceau m : change.getRemoved()) {
+                        updateEcran(m);
                     }
                 }
-            }
         );
     }
 
@@ -75,8 +66,8 @@ public class ControllerPartie {
         morceauV.layoutXProperty().bind(m.xProperty());
         morceauV.layoutYProperty().bind(m.yProperty());
         Node mv2 = new MorceauV(m.getCouleur());
-        for (Node mv : ecran.getChildren()){
-            if(mv.getLayoutY()==morceauV.getLayoutY() && mv.getLayoutX()== morceauV.getLayoutX()){
+        for (Node mv : ecran.getChildren()) {
+            if (mv.getLayoutY() == morceauV.getLayoutY() && mv.getLayoutX() == morceauV.getLayoutX()) {
                 mv2 = mv;
             }
         }
@@ -91,20 +82,9 @@ public class ControllerPartie {
             morceauV.layoutYProperty().bind(morceau.yProperty());
             ecran.getChildren().add(morceauV);
         }
-        /*if (piece instanceof Carre) {
-            CarreV carreV = new CarreV(piece);
-            for (Node mv : carreV.getMorc())
-                ecran.getChildren().add(mv);
-        }
-        if (piece instanceof Baton) {
-            BatonV batonV = new BatonV(piece);
-            for (Node mv : batonV.getMorc())
-                ecran.getChildren().add(mv);
-            //ecran.getChildren().add(batonV); // ajout du carreV au Group
-        }*/
     }
 
-    private void UpdatePieceSuivante(Piece piece){
+    private void UpdatePieceSuivante(Piece piece) {
         if (!prochainePiece.getChildren().isEmpty())
             prochainePiece.getChildren().clear();
         if (piece instanceof Carre) {

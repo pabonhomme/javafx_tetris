@@ -13,7 +13,7 @@ import java.util.Objects;
 
 public class Joueur implements Comparable<Joueur>, Serializable {
 
-    private transient StringProperty pseudo = new SimpleStringProperty(); // transient pour la serialisation npour ne pas serialiser
+    private transient StringProperty pseudo = new SimpleStringProperty(); // transient pour la serialisation pour ne pas serialiser
     public String getPseudo(){ return pseudo.get();}
     public StringProperty pseudoProperty(){ return pseudo;}
     public void setPseudo(String pseudo){this.pseudo.set(pseudo);}
