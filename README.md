@@ -1,4 +1,4 @@
-Porjet JavaFX : Tétris
+Projet JavaFX : Tétris
 
 Auteurs :
 -Paul BONHOMME
